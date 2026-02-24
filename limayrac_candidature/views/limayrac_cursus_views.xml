@@ -31,12 +31,6 @@
                            statusbar_visible="en_cours,termine"/>
                 </header>
                 <sheet>
-                    <div class="oe_button_box" name="button_box">
-                        <button name="%(limayrac_contrat.action_limayrac_contrat_from_cursus)d" type="action" 
-                                class="oe_stat_button" icon="fa-file-text-o">
-                            <field name="contrat_count" string="Contrats" widget="statinfo"/>
-                        </button>
-                    </div>
                     <group>
                         <group>
                             <field name="apprenant_id"/>
@@ -50,20 +44,6 @@
                             <field name="is_diplome"/>
                         </group>
                     </group>
-                    <notebook>
-                        <page string="Contrats">
-                            <field name="contrat_ids">
-                                <tree>
-                                    <field name="name"/>
-                                    <field name="type_contrat"/>
-                                    <field name="service_id"/>
-                                    <field name="date_debut"/>
-                                    <field name="date_fin"/>
-                                    <field name="notation"/>
-                                </tree>
-                            </field>
-                        </page>
-                    </notebook>
                 </sheet>
             </form>
         </field>

@@ -23,18 +23,6 @@
             <form>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="%(action_limayrac_voeux_from_formation)d" type="action" 
-                                class="oe_stat_button" icon="fa-heart">
-                            <field name="voeux_count" string="Vœux" widget="statinfo"/>
-                        </button>
-                        <button name="%(action_limayrac_cursus_from_formation)d" type="action" 
-                                class="oe_stat_button" icon="fa-graduation-cap">
-                            <field name="cursus_actif_count" string="Cursus actifs" widget="statinfo"/>
-                        </button>
-                        <button name="%(action_limayrac_besoin_from_formation)d" type="action" 
-                                class="oe_stat_button" icon="fa-clipboard">
-                            <field name="besoin_count" string="Besoins" widget="statinfo"/>
-                        </button>
                         <button name="%(action_limayrac_responsable_from_formation)d" type="action" 
                                 class="oe_stat_button" icon="fa-user">
                             <field name="responsable_count" string="Responsables" widget="statinfo"/>
@@ -55,25 +43,6 @@
                                     <field name="date_debut"/>
                                     <field name="date_fin"/>
                                     <field name="is_active"/>
-                                </tree>
-                            </field>
-                        </page>
-                        <page string="Vœux">
-                            <field name="voeux_ids">
-                                <tree>
-                                    <field name="apprenant_id"/>
-                                    <field name="date_candidature"/>
-                                    <field name="state"/>
-                                </tree>
-                            </field>
-                        </page>
-                        <page string="Cursus">
-                            <field name="cursus_ids">
-                                <tree>
-                                    <field name="apprenant_id"/>
-                                    <field name="date_debut"/>
-                                    <field name="date_fin"/>
-                                    <field name="is_diplome"/>
                                 </tree>
                             </field>
                         </page>
@@ -130,30 +99,6 @@
     </record>
 
     <!-- Actions contextuelles -->
-    <record id="action_limayrac_voeux_from_formation" model="ir.actions.act_window">
-        <field name="name">Vœux</field>
-        <field name="res_model">limayrac.voeux</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[('formation_id', '=', active_id)]</field>
-        <field name="context">{'default_formation_id': active_id}</field>
-    </record>
-
-    <record id="action_limayrac_cursus_from_formation" model="ir.actions.act_window">
-        <field name="name">Cursus</field>
-        <field name="res_model">limayrac.cursus</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[('formation_id', '=', active_id)]</field>
-        <field name="context">{'default_formation_id': active_id}</field>
-    </record>
-
-    <record id="action_limayrac_besoin_from_formation" model="ir.actions.act_window">
-        <field name="name">Besoins</field>
-        <field name="res_model">limayrac.besoin</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[('formation_id', '=', active_id)]</field>
-        <field name="context">{'default_formation_id': active_id}</field>
-    </record>
-
     <record id="action_limayrac_responsable_from_formation" model="ir.actions.act_window">
         <field name="name">Responsables</field>
         <field name="res_model">res.partner</field>

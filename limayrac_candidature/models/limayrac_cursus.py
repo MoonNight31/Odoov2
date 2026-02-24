@@ -23,21 +23,12 @@ class LimayracCursus(models.Model):
     email = fields.Char(related='apprenant_id.email', string='Email', readonly=True)
     phone = fields.Char(related='apprenant_id.phone', string='Téléphone', readonly=True)
     
-    # Relations
-    contrat_ids = fields.One2many('limayrac.contrat', 'cursus_id', string='Contrats')
-    contrat_count = fields.Integer(string='Nombre de contrats', compute='_compute_contrat_count')
-    
     # État du cursus
     state = fields.Selection([
         ('en_cours', 'En cours'),
         ('termine', 'Terminé'),
         ('abandonne', 'Abandonné')
     ], string='État', compute='_compute_state', store=True)
-    
-    @api.depends('contrat_ids')
-    def _compute_contrat_count(self):
-        for record in self:
-            record.contrat_count = len(record.contrat_ids)
     
     @api.depends('date_debut', 'date_fin', 'is_diplome')
     def _compute_state(self):
