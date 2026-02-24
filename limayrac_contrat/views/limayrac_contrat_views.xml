@@ -29,7 +29,7 @@
             <form>
                 <header>
                     <button name="action_rompre" string="Rompre le contrat" type="object" 
-                            attrs="{'invisible': [('state', 'in', ['brouillon', 'termine', 'rompu'])]}"/>
+                            invisible="state in ['brouillon', 'termine', 'rompu']"/>
                     <field name="state" widget="statusbar" 
                            statusbar_visible="brouillon,en_cours,termine"/>
                 </header>

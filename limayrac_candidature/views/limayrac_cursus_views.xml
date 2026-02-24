@@ -26,7 +26,7 @@
             <form>
                 <header>
                     <button name="action_diplomer" string="Diplômer" type="object" 
-                            class="oe_highlight" attrs="{'invisible': [('is_diplome', '=', True)]}"/>
+                            class="oe_highlight" invisible="is_diplome"/>
                     <field name="state" widget="statusbar" 
                            statusbar_visible="en_cours,termine"/>
                 </header>

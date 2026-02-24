@@ -10,12 +10,12 @@
             <xpath expr="//field[@name='function']" position="after">
                 <field name="poste"/>
                 <field name="service_id" domain="[('is_active', '=', True)]"/>
-                <field name="formation_responsable_id" attrs="{'invisible': [('is_company', '=', True)]}"/>
+                <field name="formation_responsable_id" invisible="is_company"/>
             </xpath>
             
             <!-- Ajouter un groupe de statuts pour les personnes -->
             <xpath expr="//notebook" position="inside">
-                <page string="Rôles Limayrac" attrs="{'invisible': [('is_company', '=', True)]}">
+                <page string="Rôles Limayrac" invisible="is_company">
                     <group>
                         <group string="Statuts">
                             <field name="is_candidat"/>
@@ -39,15 +39,15 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='vat']" position="after">
-                <field name="siret" attrs="{'invisible': [('is_company', '=', False)]}"/>
-                <field name="raison_sociale" attrs="{'invisible': [('is_company', '=', False)]}"/>
-                <field name="code_naf" attrs="{'invisible': [('is_company', '=', False)]}"/>
-                <field name="site_web" widget="url" attrs="{'invisible': [('is_company', '=', False)]}"/>
-                <field name="groupe_structure_id" attrs="{'invisible': [('is_company', '=', False)]}"/>
+                <field name="siret" invisible="not is_company"/>
+                <field name="raison_sociale" invisible="not is_company"/>
+                <field name="code_naf" invisible="not is_company"/>
+                <field name="site_web" widget="url" invisible="not is_company"/>
+                <field name="groupe_structure_id" invisible="not is_company"/>
             </xpath>
             
             <xpath expr="//notebook" position="inside">
-                <page string="Informations Limayrac" attrs="{'invisible': [('is_company', '=', False)]}">
+                <page string="Informations Limayrac" invisible="not is_company">
                     <group>
                         <group string="Statuts">
                             <field name="is_partenaire"/>

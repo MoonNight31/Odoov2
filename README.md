@@ -4,12 +4,13 @@ Système de gestion de CRM complet pour l'établissement Limayrac, développé s
 
 ## 📋 Vue d'ensemble
 
-Ce projet contient 4 modules Odoo interconnectés pour gérer l'ensemble des activités de l'établissement Limayrac :
+Ce projet contient 4 modules Odoo interconnectés pour gérer l'ensemble des activités de l'établissement Limayrac.
 
-- **limayrac_contacts** : Gestion des personnes et structures
-- **limayrac_formation** : Gestion des formations
-- **limayrac_candidature** : Gestion des vœux et cursus
-- **limayrac_contrat** : Gestion des contrats d'alternance
+**📦 Installation simplifiée** : Installez uniquement le module **"Limayrac - Contrats"** qui installera automatiquement tous les modules nécessaires dans le bon ordre :
+1. limayrac_contacts (base)
+2. limayrac_formation
+3. limayrac_candidature
+4. limayrac_contrat
 
 ## 🏗️ Architecture
 
@@ -111,16 +112,19 @@ cp -r /path/to/Odoov2/* .
 Dans Odoo, aller dans :
 - Applications → Mettre à jour la liste des applications
 
-3. **Installer les modules dans l'ordre**
+3. **Installer le CRM Limayrac**
 
-L'ordre d'installation est important :
+✅ **Installation simplifiée** : Installer uniquement le module **"Limayrac - Contrats"**
 
-1. `Limayrac - Contacts`
-2. `Limayrac - Formations`
-3. `Limayrac - Candidatures`
-4. `Limayrac - Contrats`
+Ce module installera automatiquement tous les modules nécessaires dans le bon ordre :
+- limayrac_contacts
+- limayrac_formation
+- limayrac_candidature
+- limayrac_contrat
 
-Ou installer directement `Limayrac - Contrats` qui installera automatiquement les dépendances.
+> ⚠️ **Important** : Ne pas installer les modules séparément, laissez Odoo gérer automatiquement les dépendances.
+
+Pour plus de détails, consultez [INSTALLATION.md](INSTALLATION.md) et [QUICKSTART.md](QUICKSTART.md).
 
 ## 📊 Utilisation
 

@@ -26,11 +26,11 @@
             <form>
                 <header>
                     <button name="action_accepter" string="Accepter" type="object" 
-                            class="oe_highlight" attrs="{'invisible': [('state', 'in', ['accepte', 'refuse', 'annule'])]}"/>
+                            class="oe_highlight" invisible="state in ['accepte', 'refuse', 'annule']"/>
                     <button name="action_refuser" string="Refuser" type="object" 
-                            attrs="{'invisible': [('state', 'in', ['accepte', 'refuse', 'annule'])]}"/>
+                            invisible="state in ['accepte', 'refuse', 'annule']"/>
                     <button name="action_annuler" string="Annuler" type="object" 
-                            attrs="{'invisible': [('state', 'in', ['refuse', 'annule'])]}"/>
+                            invisible="state in ['refuse', 'annule']"/>
                     <field name="state" widget="statusbar" 
                            statusbar_visible="nouveau,en_cours,accepte"/>
                 </header>
