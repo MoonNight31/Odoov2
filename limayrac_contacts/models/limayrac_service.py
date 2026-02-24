@@ -22,9 +22,6 @@ class LimayracService(models.Model):
     # Personnes liées à ce service
     personne_ids = fields.One2many('res.partner', 'service_id', string='Personnes')
     
-    # Contrats liés à ce service
-    contrat_ids = fields.One2many('limayrac.contrat', 'service_id', string='Contrats')
-    
     @api.model
     def create(self, vals):
         vals['date_created'] = fields.Datetime.now()
