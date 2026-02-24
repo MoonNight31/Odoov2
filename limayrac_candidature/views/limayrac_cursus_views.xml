@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue arbre -->
+    <record id="view_limayrac_cursus_tree" model="ir.ui.view">
+        <field name="name">limayrac.cursus.tree</field>
+        <field name="model">limayrac.cursus</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="is_diplome == True" 
+                  decoration-info="state == 'en_cours'">
+                <field name="apprenant_id"/>
+                <field name="formation_id"/>
+                <field name="date_debut"/>
+                <field name="date_fin"/>
+                <field name="state"/>
+                <field name="is_diplome"/>
+                <field name="contrat_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue formulaire -->
+    <record id="view_limayrac_cursus_form" model="ir.ui.view">
+        <field name="name">limayrac.cursus.form</field>
+        <field name="model">limayrac.cursus</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_diplomer" string="Diplômer" type="object" 
+                            class="oe_highlight" attrs="{'invisible': [('is_diplome', '=', True)]}"/>
+                    <field name="state" widget="statusbar" 
+                           statusbar_visible="en_cours,termine"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(limayrac_contrat.action_limayrac_contrat_from_cursus)d" type="action" 
+                                class="oe_stat_button" icon="fa-file-text-o">
+                            <field name="contrat_count" string="Contrats" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="apprenant_id"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                        </group>
+                        <group>
+                            <field name="formation_id"/>
+                            <field name="date_debut"/>
+                            <field name="date_fin"/>
+                            <field name="is_diplome"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Contrats">
+                            <field name="contrat_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="type_contrat"/>
+                                    <field name="service_id"/>
+                                    <field name="date_debut"/>
+                                    <field name="date_fin"/>
+                                    <field name="notation"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue recherche -->
+    <record id="view_limayrac_cursus_search" model="ir.ui.view">
+        <field name="name">limayrac.cursus.search</field>
+        <field name="model">limayrac.cursus</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="apprenant_id"/>
+                <field name="formation_id"/>
+                <filter string="En cours" name="en_cours" domain="[('state', '=', 'en_cours')]"/>
+                <filter string="Terminé" name="termine" domain="[('state', '=', 'termine')]"/>
+                <filter string="Diplômés" name="diplomes" domain="[('is_diplome', '=', True)]"/>
+                <separator/>
+                <filter string="Année en cours" name="this_year" 
+                        domain="['|', ('date_debut', '&gt;=', (context_today() - relativedelta(months=12)).strftime('%Y-09-01')), 
+                                 '&amp;', ('date_fin', '&gt;=', (context_today()).strftime('%Y-%m-%d')), ('date_debut', '&lt;=', (context_today()).strftime('%Y-%m-%d'))]"/>
+                <group expand="0" string="Grouper par">
+                    <filter string="Formation" name="group_formation" context="{'group_by': 'formation_id'}"/>
+                    <filter string="État" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Année" name="group_year" context="{'group_by': 'date_debut:year'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_limayrac_cursus" model="ir.actions.act_window">
+        <field name="name">Cursus</field>
+        <field name="res_model">limayrac.cursus</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_en_cours': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouveau cursus
+            </p>
+            <p>
+                Les cursus représentent le parcours des apprenants dans une formation.
+            </p>
+        </field>
+    </record>
+</odoo>

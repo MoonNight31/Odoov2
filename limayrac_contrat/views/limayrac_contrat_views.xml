@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue arbre -->
+    <record id="view_limayrac_contrat_tree" model="ir.ui.view">
+        <field name="name">limayrac.contrat.tree</field>
+        <field name="model">limayrac.contrat</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="state == 'en_cours'" 
+                  decoration-info="state == 'brouillon'" 
+                  decoration-muted="state == 'termine'"
+                  decoration-danger="state == 'rompu'">
+                <field name="name"/>
+                <field name="type_contrat"/>
+                <field name="apprenant_id"/>
+                <field name="structure_id"/>
+                <field name="date_debut"/>
+                <field name="date_fin"/>
+                <field name="notation"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue formulaire -->
+    <record id="view_limayrac_contrat_form" model="ir.ui.view">
+        <field name="name">limayrac.contrat.form</field>
+        <field name="model">limayrac.contrat</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_rompre" string="Rompre le contrat" type="object" 
+                            attrs="{'invisible': [('state', 'in', ['brouillon', 'termine', 'rompu'])]}"/>
+                    <field name="state" widget="statusbar" 
+                           statusbar_visible="brouillon,en_cours,termine"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Informations du contrat">
+                            <field name="type_contrat"/>
+                            <field name="type_activite"/>
+                            <field name="date_debut"/>
+                            <field name="date_fin"/>
+                        </group>
+                        <group string="Notation">
+                            <field name="notation" widget="priority"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Apprenant">
+                            <field name="apprenant_id"/>
+                            <field name="cursus_id"/>
+                            <field name="formation_id"/>
+                        </group>
+                        <group string="Entreprise">
+                            <field name="structure_id"/>
+                            <field name="service_id"/>
+                        </group>
+                    </group>
+                    <group string="Tuteurs">
+                        <group>
+                            <field name="tuteur_entreprise_id"/>
+                            <field name="tuteur_entreprise2_id"/>
+                        </group>
+                        <group>
+                            <field name="tuteur_ecole_id"/>
+                        </group>
+                    </group>
+                    <group string="Commentaires">
+                        <field name="commentaire" nolabel="1"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue recherche -->
+    <record id="view_limayrac_contrat_search" model="ir.ui.view">
+        <field name="name">limayrac.contrat.search</field>
+        <field name="model">limayrac.contrat</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="apprenant_id"/>
+                <field name="structure_id"/>
+                <field name="formation_id"/>
+                <filter string="Brouillon" name="brouillon" domain="[('state', '=', 'brouillon')]"/>
+                <filter string="En cours" name="en_cours" domain="[('state', '=', 'en_cours')]"/>
+                <filter string="Terminé" name="termine" domain="[('state', '=', 'termine')]"/>
+                <filter string="Rompu" name="rompu" domain="[('state', '=', 'rompu')]"/>
+                <separator/>
+                <filter string="Apprentissage" name="apprentissage" domain="[('type_contrat', '=', 'apprentissage')]"/>
+                <filter string="Professionnalisation" name="professionnalisation" domain="[('type_contrat', '=', 'professionnalisation')]"/>
+                <filter string="Stage" name="stage" domain="[('type_contrat', '=', 'stage')]"/>
+                <separator/>
+                <filter string="Année en cours" name="this_year" 
+                        domain="['|', ('date_debut', '&gt;=', (context_today() - relativedelta(months=12)).strftime('%Y-09-01')), 
+                                 '&amp;', ('date_fin', '&gt;=', (context_today()).strftime('%Y-%m-%d')), ('date_debut', '&lt;=', (context_today()).strftime('%Y-%m-%d'))]"/>
+                <group expand="0" string="Grouper par">
+                    <filter string="Apprenant" name="group_apprenant" context="{'group_by': 'apprenant_id'}"/>
+                    <filter string="Structure" name="group_structure" context="{'group_by': 'structure_id'}"/>
+                    <filter string="Formation" name="group_formation" context="{'group_by': 'formation_id'}"/>
+                    <filter string="Type" name="group_type" context="{'group_by': 'type_contrat'}"/>
+                    <filter string="État" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Année" name="group_year" context="{'group_by': 'date_debut:year'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Vue Kanban -->
+    <record id="view_limayrac_contrat_kanban" model="ir.ui.view">
+        <field name="name">limayrac.contrat.kanban</field>
+        <field name="model">limayrac.contrat</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name"/>
+                <field name="apprenant_id"/>
+                <field name="structure_id"/>
+                <field name="type_contrat"/>
+                <field name="state"/>
+                <field name="notation"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_record_top">
+                                <div class="o_kanban_record_headings">
+                                    <strong class="o_kanban_record_title"><field name="name"/></strong>
+                                </div>
+                                <span class="float-right badge badge-pill">
+                                    <field name="state"/>
+                                </span>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <field name="apprenant_id"/>
+                                <br/>
+                                <field name="structure_id"/>
+                            </div>
+                            <div class="o_kanban_record_bottom">
+                                <div class="oe_kanban_bottom_left">
+                                    <field name="type_contrat"/>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <field name="notation" widget="priority"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_limayrac_contrat" model="ir.actions.act_window">
+        <field name="name">Contrats</field>
+        <field name="res_model">limayrac.contrat</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{'search_default_en_cours': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouveau contrat
+            </p>
+            <p>
+                Les contrats représentent les contrats d'apprentissage, de professionnalisation ou les conventions de stage.
+            </p>
+        </field>
+    </record>
+
+    <!-- Action contextuelle depuis cursus -->
+    <record id="action_limayrac_contrat_from_cursus" model="ir.actions.act_window">
+        <field name="name">Contrats</field>
+        <field name="res_model">limayrac.contrat</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('cursus_id', '=', active_id)]</field>
+        <field name="context">{'default_cursus_id': active_id, 'default_apprenant_id': active_id}</field>
+    </record>
+</odoo>

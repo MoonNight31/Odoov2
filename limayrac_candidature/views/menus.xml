@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu Candidatures -->
+    <menuitem id="menu_limayrac_candidature"
+              name="Candidatures"
+              parent="limayrac_contacts.menu_limayrac_root"
+              sequence="30"/>
+
+    <menuitem id="menu_limayrac_voeux"
+              name="Vœux"
+              parent="menu_limayrac_candidature"
+              action="action_limayrac_voeux"
+              sequence="10"/>
+
+    <menuitem id="menu_limayrac_cursus"
+              name="Cursus"
+              parent="menu_limayrac_candidature"
+              action="action_limayrac_cursus"
+              sequence="20"/>
+</odoo>

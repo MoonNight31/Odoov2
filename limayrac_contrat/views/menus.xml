@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu Contrats -->
+    <menuitem id="menu_limayrac_contrat"
+              name="Contrats"
+              parent="limayrac_contacts.menu_limayrac_root"
+              sequence="40"/>
+
+    <menuitem id="menu_limayrac_contrat_list"
+              name="Contrats"
+              parent="menu_limayrac_contrat"
+              action="action_limayrac_contrat"
+              sequence="10"/>
+</odoo>

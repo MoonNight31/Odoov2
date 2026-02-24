@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu Formations -->
+    <menuitem id="menu_limayrac_formation"
+              name="Formations"
+              parent="limayrac_contacts.menu_limayrac_root"
+              sequence="20"/>
+
+    <menuitem id="menu_limayrac_formation_list"
+              name="Formations"
+              parent="menu_limayrac_formation"
+              action="action_limayrac_formation"
+              sequence="10"/>
+
+    <menuitem id="menu_limayrac_titre_rncp"
+              name="Titres RNCP"
+              parent="menu_limayrac_formation"
+              action="action_limayrac_titre_rncp"
+              sequence="20"/>
+
+    <menuitem id="menu_limayrac_besoin"
+              name="Besoins"
+              parent="menu_limayrac_formation"
+              action="action_limayrac_besoin"
+              sequence="30"/>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_limayrac_formation_user,limayrac.formation.user,model_limayrac_formation,base.group_user,1,1,1,1
+access_limayrac_titre_rncp_user,limayrac.titre.rncp.user,model_limayrac_titre_rncp,base.group_user,1,1,1,1
+access_limayrac_besoin_user,limayrac.besoin.user,model_limayrac_besoin,base.group_user,1,1,1,1

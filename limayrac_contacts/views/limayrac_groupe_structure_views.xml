@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue arbre -->
+    <record id="view_limayrac_groupe_structure_tree" model="ir.ui.view">
+        <field name="name">limayrac.groupe.structure.tree</field>
+        <field name="model">limayrac.groupe.structure</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="siren"/>
+                <field name="siege_social"/>
+                <field name="structure_count"/>
+                <field name="date_created"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue formulaire -->
+    <record id="view_limayrac_groupe_structure_form" model="ir.ui.view">
+        <field name="name">limayrac.groupe.structure.form</field>
+        <field name="model">limayrac.groupe.structure</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="structure_count" string="Structures" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="siren"/>
+                        </group>
+                        <group>
+                            <field name="siege_social"/>
+                            <field name="date_created"/>
+                            <field name="date_updated"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Structures/Établissements">
+                            <field name="structure_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="siret"/>
+                                    <field name="city"/>
+                                    <field name="phone"/>
+                                    <field name="email"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue recherche -->
+    <record id="view_limayrac_groupe_structure_search" model="ir.ui.view">
+        <field name="name">limayrac.groupe.structure.search</field>
+        <field name="model">limayrac.groupe.structure</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="siren"/>
+                <field name="siege_social"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_limayrac_groupe_structure" model="ir.actions.act_window">
+        <field name="name">Groupes de Structures</field>
+        <field name="res_model">limayrac.groupe.structure</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouveau groupe de structures
+            </p>
+            <p>
+                Les groupes de structures représentent les holdings ou groupes d'entreprises identifiés par leur SIREN.
+            </p>
+        </field>
+    </record>
+</odoo>

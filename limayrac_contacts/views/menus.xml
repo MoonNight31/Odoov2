@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu principal Limayrac -->
+    <menuitem id="menu_limayrac_root"
+              name="Limayrac"
+              sequence="10"/>
+
+    <!-- Menu Contacts -->
+    <menuitem id="menu_limayrac_contacts"
+              name="Contacts"
+              parent="menu_limayrac_root"
+              sequence="10"/>
+
+    <menuitem id="menu_limayrac_contacts_person"
+              name="Personnes"
+              parent="menu_limayrac_contacts"
+              action="base.action_partner_form"
+              sequence="10"/>
+
+    <menuitem id="menu_limayrac_contacts_company"
+              name="Structures"
+              parent="menu_limayrac_contacts"
+              action="base.action_partner_form"
+              sequence="20"/>
+
+    <menuitem id="menu_limayrac_service"
+              name="Services"
+              parent="menu_limayrac_contacts"
+              action="action_limayrac_service"
+              sequence="30"/>
+
+    <menuitem id="menu_limayrac_groupe_structure"
+              name="Groupes"
+              parent="menu_limayrac_contacts"
+              action="action_limayrac_groupe_structure"
+              sequence="40"/>
+</odoo>

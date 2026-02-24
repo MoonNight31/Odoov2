@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue arbre -->
+    <record id="view_limayrac_voeux_tree" model="ir.ui.view">
+        <field name="name">limayrac.voeux.tree</field>
+        <field name="model">limayrac.voeux</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="state == 'accepte'" 
+                  decoration-danger="state == 'refuse'" 
+                  decoration-muted="state == 'annule'">
+                <field name="apprenant_id"/>
+                <field name="formation_id"/>
+                <field name="date_candidature"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue formulaire -->
+    <record id="view_limayrac_voeux_form" model="ir.ui.view">
+        <field name="name">limayrac.voeux.form</field>
+        <field name="model">limayrac.voeux</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_accepter" string="Accepter" type="object" 
+                            class="oe_highlight" attrs="{'invisible': [('state', 'in', ['accepte', 'refuse', 'annule'])]}"/>
+                    <button name="action_refuser" string="Refuser" type="object" 
+                            attrs="{'invisible': [('state', 'in', ['accepte', 'refuse', 'annule'])]}"/>
+                    <button name="action_annuler" string="Annuler" type="object" 
+                            attrs="{'invisible': [('state', 'in', ['refuse', 'annule'])]}"/>
+                    <field name="state" widget="statusbar" 
+                           statusbar_visible="nouveau,en_cours,accepte"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="apprenant_id"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                        </group>
+                        <group>
+                            <field name="formation_id"/>
+                            <field name="date_candidature"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue recherche -->
+    <record id="view_limayrac_voeux_search" model="ir.ui.view">
+        <field name="name">limayrac.voeux.search</field>
+        <field name="model">limayrac.voeux</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="apprenant_id"/>
+                <field name="formation_id"/>
+                <filter string="Nouveau" name="nouveau" domain="[('state', '=', 'nouveau')]"/>
+                <filter string="En cours" name="en_cours" domain="[('state', '=', 'en_cours')]"/>
+                <filter string="Accepté" name="accepte" domain="[('state', '=', 'accepte')]"/>
+                <filter string="Refusé" name="refuse" domain="[('state', '=', 'refuse')]"/>
+                <separator/>
+                <filter string="Cette année" name="this_year" 
+                        domain="[('date_candidature', '&gt;=', (context_today() - relativedelta(months=12)).strftime('%Y-01-01'))]"/>
+                <group expand="0" string="Grouper par">
+                    <filter string="Formation" name="group_formation" context="{'group_by': 'formation_id'}"/>
+                    <filter string="État" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Mois" name="group_month" context="{'group_by': 'date_candidature:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_limayrac_voeux" model="ir.actions.act_window">
+        <field name="name">Vœux/Candidatures</field>
+        <field name="res_model">limayrac.voeux</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_nouveau': 1, 'search_default_en_cours': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouveau vœu
+            </p>
+            <p>
+                Les vœux représentent les candidatures des personnes souhaitant intégrer une formation.
+            </p>
+        </field>
+    </record>
+</odoo>

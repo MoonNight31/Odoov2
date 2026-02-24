@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue arbre -->
+    <record id="view_limayrac_formation_tree" model="ir.ui.view">
+        <field name="name">limayrac.formation.tree</field>
+        <field name="model">limayrac.formation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nom_commercial"/>
+                <field name="voeux_count"/>
+                <field name="cursus_actif_count"/>
+                <field name="cursus_count"/>
+                <field name="besoin_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue formulaire -->
+    <record id="view_limayrac_formation_form" model="ir.ui.view">
+        <field name="name">limayrac.formation.form</field>
+        <field name="model">limayrac.formation</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(action_limayrac_voeux_from_formation)d" type="action" 
+                                class="oe_stat_button" icon="fa-heart">
+                            <field name="voeux_count" string="Vœux" widget="statinfo"/>
+                        </button>
+                        <button name="%(action_limayrac_cursus_from_formation)d" type="action" 
+                                class="oe_stat_button" icon="fa-graduation-cap">
+                            <field name="cursus_actif_count" string="Cursus actifs" widget="statinfo"/>
+                        </button>
+                        <button name="%(action_limayrac_besoin_from_formation)d" type="action" 
+                                class="oe_stat_button" icon="fa-clipboard">
+                            <field name="besoin_count" string="Besoins" widget="statinfo"/>
+                        </button>
+                        <button name="%(action_limayrac_responsable_from_formation)d" type="action" 
+                                class="oe_stat_button" icon="fa-user">
+                            <field name="responsable_count" string="Responsables" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="nom_commercial"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                    <notebook>
+                        <page string="Titres RNCP">
+                            <field name="titre_rncp_ids">
+                                <tree editable="bottom">
+                                    <field name="code_rncp"/>
+                                    <field name="intitule"/>
+                                    <field name="date_debut"/>
+                                    <field name="date_fin"/>
+                                    <field name="is_active"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Vœux">
+                            <field name="voeux_ids">
+                                <tree>
+                                    <field name="apprenant_id"/>
+                                    <field name="date_candidature"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Cursus">
+                            <field name="cursus_ids">
+                                <tree>
+                                    <field name="apprenant_id"/>
+                                    <field name="date_debut"/>
+                                    <field name="date_fin"/>
+                                    <field name="is_diplome"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Besoins">
+                            <field name="besoin_ids">
+                                <tree>
+                                    <field name="titre"/>
+                                    <field name="structure_id"/>
+                                    <field name="date"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Responsables">
+                            <field name="responsable_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="email"/>
+                                    <field name="phone"/>
+                                    <field name="poste"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue recherche -->
+    <record id="view_limayrac_formation_search" model="ir.ui.view">
+        <field name="name">limayrac.formation.search</field>
+        <field name="model">limayrac.formation</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="nom_commercial"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_limayrac_formation" model="ir.actions.act_window">
+        <field name="name">Formations</field>
+        <field name="res_model">limayrac.formation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer une nouvelle formation
+            </p>
+            <p>
+                Les formations représentent les différents programmes proposés par Limayrac.
+            </p>
+        </field>
+    </record>
+
+    <!-- Actions contextuelles -->
+    <record id="action_limayrac_voeux_from_formation" model="ir.actions.act_window">
+        <field name="name">Vœux</field>
+        <field name="res_model">limayrac.voeux</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('formation_id', '=', active_id)]</field>
+        <field name="context">{'default_formation_id': active_id}</field>
+    </record>
+
+    <record id="action_limayrac_cursus_from_formation" model="ir.actions.act_window">
+        <field name="name">Cursus</field>
+        <field name="res_model">limayrac.cursus</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('formation_id', '=', active_id)]</field>
+        <field name="context">{'default_formation_id': active_id}</field>
+    </record>
+
+    <record id="action_limayrac_besoin_from_formation" model="ir.actions.act_window">
+        <field name="name">Besoins</field>
+        <field name="res_model">limayrac.besoin</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('formation_id', '=', active_id)]</field>
+        <field name="context">{'default_formation_id': active_id}</field>
+    </record>
+
+    <record id="action_limayrac_responsable_from_formation" model="ir.actions.act_window">
+        <field name="name">Responsables</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('formation_responsable_id', '=', active_id)]</field>
+        <field name="context">{'default_formation_responsable_id': active_id, 'default_is_company': False}</field>
+    </record>
+</odoo>

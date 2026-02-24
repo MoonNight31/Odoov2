@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_limayrac_service_user,limayrac.service.user,model_limayrac_service,base.group_user,1,1,1,1
+access_limayrac_groupe_structure_user,limayrac.groupe.structure.user,model_limayrac_groupe_structure,base.group_user,1,1,1,1

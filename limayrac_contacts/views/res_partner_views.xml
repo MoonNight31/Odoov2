@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue formulaire étendue pour les personnes -->
+    <record id="view_partner_form_limayrac_person" model="ir.ui.view">
+        <field name="name">res.partner.form.limayrac.person</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Ajouter les champs spécifiques pour les personnes -->
+            <xpath expr="//field[@name='function']" position="after">
+                <field name="poste"/>
+                <field name="service_id" domain="[('is_active', '=', True)]"/>
+                <field name="formation_responsable_id" attrs="{'invisible': [('is_company', '=', True)]}"/>
+            </xpath>
+            
+            <!-- Ajouter un groupe de statuts pour les personnes -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Rôles Limayrac" attrs="{'invisible': [('is_company', '=', True)]}">
+                    <group>
+                        <group string="Statuts">
+                            <field name="is_candidat"/>
+                            <field name="is_apprenant"/>
+                            <field name="is_alumni"/>
+                        </group>
+                        <group string="Fonctions">
+                            <field name="is_intervenant"/>
+                            <field name="is_tuteur"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Vue formulaire étendue pour les structures -->
+    <record id="view_partner_form_limayrac_company" model="ir.ui.view">
+        <field name="name">res.partner.form.limayrac.company</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="siret" attrs="{'invisible': [('is_company', '=', False)]}"/>
+                <field name="raison_sociale" attrs="{'invisible': [('is_company', '=', False)]}"/>
+                <field name="code_naf" attrs="{'invisible': [('is_company', '=', False)]}"/>
+                <field name="site_web" widget="url" attrs="{'invisible': [('is_company', '=', False)]}"/>
+                <field name="groupe_structure_id" attrs="{'invisible': [('is_company', '=', False)]}"/>
+            </xpath>
+            
+            <xpath expr="//notebook" position="inside">
+                <page string="Informations Limayrac" attrs="{'invisible': [('is_company', '=', False)]}">
+                    <group>
+                        <group string="Statuts">
+                            <field name="is_partenaire"/>
+                            <field name="is_prospect"/>
+                            <field name="is_taxe_apprentissage"/>
+                            <field name="is_blacklist"/>
+                        </group>
+                    </group>
+                    <group string="Services">
+                        <field name="service_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="type_service"/>
+                                <field name="is_active"/>
+                                <field name="is_blacklist"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Filtres pour la vue liste -->
+    <record id="view_partner_search_limayrac" model="ir.ui.view">
+        <field name="name">res.partner.search.limayrac</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='customer']" position="after">
+                <separator/>
+                <filter string="Candidats" name="candidats" domain="[('is_candidat', '=', True)]"/>
+                <filter string="Apprenants" name="apprenants" domain="[('is_apprenant', '=', True)]"/>
+                <filter string="Alumni" name="alumni" domain="[('is_alumni', '=', True)]"/>
+                <filter string="Intervenants" name="intervenants" domain="[('is_intervenant', '=', True)]"/>
+                <filter string="Tuteurs" name="tuteurs" domain="[('is_tuteur', '=', True)]"/>
+                <filter string="Responsables de formation" name="responsables" domain="[('formation_responsable_id', '!=', False)]"/>
+                <separator/>
+                <filter string="Partenaires" name="partenaires" domain="[('is_partenaire', '=', True)]"/>
+                <filter string="Prospects" name="prospects" domain="[('is_prospect', '=', True)]"/>
+                <filter string="Liste noire" name="blacklist" domain="[('is_blacklist', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
