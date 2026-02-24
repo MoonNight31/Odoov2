@@ -13,7 +13,6 @@
                 <field name="date_fin"/>
                 <field name="state"/>
                 <field name="is_diplome"/>
-                <field name="contrat_count"/>
             </tree>
         </field>
     </record>

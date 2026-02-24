@@ -7,10 +7,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="nom_commercial"/>
-                <field name="voeux_count"/>
-                <field name="cursus_actif_count"/>
-                <field name="cursus_count"/>
-                <field name="besoin_count"/>
+                <field name="responsable_count"/>
             </tree>
         </field>
     </record>
