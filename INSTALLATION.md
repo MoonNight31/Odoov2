@@ -1,5 +1,7 @@
 # Guide d'installation rapide - CRM Limayrac
 
+> **💡 Installation simplifiée** : Vous n'avez qu'à installer le module **"Limayrac - Contrats"** qui installera automatiquement tous les modules nécessaires (Contacts, Formations, Candidatures).
+
 ## Installation rapide
 
 ### 1. Prérequis
@@ -35,14 +37,20 @@
 4. **Mettre à jour la liste des applications**
    - Applications → Mettre à jour la liste des applications
 
-5. **Installer le module principal**
+5. **Installer le CRM Limayrac**
    - Applications → Rechercher "Limayrac"
-   - Installer "Limayrac - Contrats" (installera automatiquement les dépendances)
+   - Installer "**Limayrac - Contrats**"
+   - ⚠️ **Ce module unique installera automatiquement tous les autres modules nécessaires** :
+     - Limayrac - Contacts (base)
+     - Limayrac - Formations
+     - Limayrac - Candidatures
+     - Limayrac - Contrats
 
 #### Méthode 2 : Via la ligne de commande
 
 ```bash
-./odoo-bin -d nom_base_de_donnees -i limayrac_contacts,limayrac_formation,limayrac_candidature,limayrac_contrat --stop-after-init
+# Installation du module principal qui installera automatiquement tous les autres
+./odoo-bin -d nom_base_de_donnees -i limayrac_contrat --stop-after-init
 ```
 
 ### 3. Vérification
@@ -138,11 +146,42 @@ print("Données de démonstration créées avec succès!")
 - Se déconnecter/reconnecter
 
 ### Erreur de dépendances
-Installer les modules dans cet ordre :
-1. limayrac_contacts
+Installer uniquement le module **"Limayrac - Contrats"** qui installera automatiquement les autres modules dans le bon ordre :
+1. limayrac_contacts (base)
 2. limayrac_formation
 3. limayrac_candidature
 4. limayrac_contrat
+
+**Important** : Ne pas installer les modules séparément, laissez Odoo gérer les dépendances automatiquement.
+
+## Désinstallation
+
+Si vous devez désinstaller les modules (par exemple après une erreur) :
+
+1. **Dans Odoo** : Applications → Filtrer "Installé" → Rechercher "Limayrac"
+2. **Désinstaller uniquement "Limayrac - Contrats"**
+3. Les autres modules seront automatiquement désinstallés si plus aucun module ne dépend d'eux
+4. **Redémarrer Odoo** : `sudo systemctl restart odoo`
+5. **Réinstaller** : Suivre la procédure d'installation normale
+
+### Désinstallation complète (nettoyage de la base)
+
+Si vous souhaitez nettoyer complètement la base de données :
+
+```bash
+# Se connecter à PostgreSQL
+sudo -u postgres psql nom_de_votre_base
+
+# Supprimer les données
+DELETE FROM ir_model_fields WHERE model LIKE 'limayrac.%';
+DELETE FROM ir_model WHERE model LIKE 'limayrac.%';
+DELETE FROM ir_model_data WHERE module LIKE 'limayrac_%';
+
+# Quitter
+\q
+```
+
+Puis redémarrer Odoo.
 
 ## Prochaines étapes
 

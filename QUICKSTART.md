@@ -1,5 +1,7 @@
 # 🚀 Démarrage Rapide - CRM Limayrac
 
+> **📦 Installation en un clic** : Installer uniquement le module "Limayrac - Contrats" installera automatiquement tous les modules nécessaires !
+
 ## ⚡ Installation en 5 minutes
 
 ### 1. Copier les modules

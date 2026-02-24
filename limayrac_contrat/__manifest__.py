@@ -13,13 +13,13 @@
         - Suivi des notations et commentaires
     """,
     'author': 'Limayrac',
-    'depends': ['base', 'mail', 'limayrac_contacts', 'limayrac_formation', 'limayrac_candidature'],
+    'depends': ['base', 'mail', 'limayrac_candidature'],
     'data': [
         'security/ir.model.access.csv',
         'views/limayrac_contrat_views.xml',
         'views/menus.xml',
     ],
     'installable': True,
-    'application': False,
+    'application': True,
     'auto_install': False,
 }
