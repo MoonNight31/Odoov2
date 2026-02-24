@@ -12,6 +12,15 @@
         </field>
     </record>
 
+    <!-- Actions contextuelles (AVANT les vues qui les utilisent) -->
+    <record id="action_limayrac_responsable_from_formation" model="ir.actions.act_window">
+        <field name="name">Responsables</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('formation_responsable_id', '=', active_id)]</field>
+        <field name="context">{'default_formation_responsable_id': active_id, 'default_is_company': False}</field>
+    </record>
+
     <!-- Vue formulaire -->
     <record id="view_limayrac_formation_form" model="ir.ui.view">
         <field name="name">limayrac.formation.form</field>
@@ -93,14 +102,5 @@
                 Les formations représentent les différents programmes proposés par Limayrac.
             </p>
         </field>
-    </record>
-
-    <!-- Actions contextuelles -->
-    <record id="action_limayrac_responsable_from_formation" model="ir.actions.act_window">
-        <field name="name">Responsables</field>
-        <field name="res_model">res.partner</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[('formation_responsable_id', '=', active_id)]</field>
-        <field name="context">{'default_formation_responsable_id': active_id, 'default_is_company': False}</field>
     </record>
 </odoo>
