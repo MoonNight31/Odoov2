@@ -20,6 +20,9 @@
         'views/limayrac_cursus_views.xml',
         'views/menus.xml',
     ],
+    'demo': [
+        'demo/demo_data.xml',
+    ],
     'installable': True,
     'application': False,
     'auto_install': False,

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Groupes de structures -->
+    <record id="groupe_techcorp" model="limayrac.groupe.structure">
+        <field name="name">Groupe TechCorp</field>
+        <field name="siren">123456789</field>
+    </record>
+
+    <!-- Structures entreprises -->
+    <record id="structure_techcorp" model="res.partner">
+        <field name="name">TechCorp Solutions Toulouse</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">12345678900015</field>
+        <field name="raison_sociale">TechCorp Solutions SAS</field>
+        <field name="code_naf">6201Z</field>
+        <field name="site_web">https://techcorp-solutions.fr</field>
+        <field name="street">10 Avenue de l'Innovation</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31000</field>
+        <field name="phone">0561234567</field>
+        <field name="email">contact@techcorp-solutions.fr</field>
+        <field name="is_partenaire" eval="True"/>
+        <field name="groupe_structure_id" ref="groupe_techcorp"/>
+    </record>
+
+    <record id="structure_digitup" model="res.partner">
+        <field name="name">DigitUp Marketing</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">98765432100012</field>
+        <field name="raison_sociale">DigitUp Marketing SARL</field>
+        <field name="code_naf">7311Z</field>
+        <field name="site_web">https://digitup.fr</field>
+        <field name="street">25 Rue du Commerce</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31200</field>
+        <field name="phone">0562345678</field>
+        <field name="email">rh@digitup.fr</field>
+        <field name="is_partenaire" eval="True"/>
+    </record>
+
+    <record id="structure_innovtech" model="res.partner">
+        <field name="name">InnovTech Industries</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">45678912300018</field>
+        <field name="raison_sociale">InnovTech Industries SA</field>
+        <field name="code_naf">6202A</field>
+        <field name="site_web">https://innovtech.com</field>
+        <field name="street">50 Boulevard Technologique</field>
+        <field name="city">Labège</field>
+        <field name="zip">31670</field>
+        <field name="phone">0563456789</field>
+        <field name="email">recrutement@innovtech.com</field>
+        <field name="is_partenaire" eval="True"/>
+        <field name="is_taxe_apprentissage" eval="True"/>
+    </record>
+
+    <!-- Services -->
+    <record id="service_dev" model="limayrac.service">
+        <field name="type_service">Développement Web</field>
+        <field name="structure_id" ref="structure_techcorp"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="service_marketing" model="limayrac.service">
+        <field name="type_service">Marketing Digital</field>
+        <field name="structure_id" ref="structure_digitup"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="service_infrastructure" model="limayrac.service">
+        <field name="type_service">Infrastructure &amp; Cloud</field>
+        <field name="structure_id" ref="structure_innovtech"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <!-- Intervenants -->
+    <record id="intervenant_lefebvre" model="res.partner">
+        <field name="name">Lefebvre Jean</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">jean.lefebvre@limayrac.fr</field>
+        <field name="phone">0561334455</field>
+        <field name="poste">Formateur Développement</field>
+        <field name="is_intervenant" eval="True"/>
+    </record>
+
+    <record id="intervenant_bernard" model="res.partner">
+        <field name="name">Bernard Claire</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">claire.bernard@limayrac.fr</field>
+        <field name="phone">0561445566</field>
+        <field name="poste">Formatrice Réseaux</field>
+        <field name="is_intervenant" eval="True"/>
+    </record>
+
+    <!-- Tuteurs entreprise -->
+    <record id="tuteur_dubois" model="res.partner">
+        <field name="name">Dubois Thomas</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">thomas.dubois@techcorp-solutions.fr</field>
+        <field name="phone">0561556677</field>
+        <field name="poste">Lead Developer</field>
+        <field name="service_id" ref="service_dev"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <record id="tuteur_laurent" model="res.partner">
+        <field name="name">Laurent Marie</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">marie.laurent@digitup.fr</field>
+        <field name="phone">0562667788</field>
+        <field name="poste">Responsable Marketing</field>
+        <field name="service_id" ref="service_marketing"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <record id="tuteur_petit" model="res.partner">
+        <field name="name">Petit Alexandre</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">alexandre.petit@innovtech.com</field>
+        <field name="phone">0563778899</field>
+        <field name="poste">Architecte Cloud</field>
+        <field name="service_id" ref="service_infrastructure"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <!-- Candidats -->
+    <record id="candidat_moreau" model="res.partner">
+        <field name="name">Moreau Lucas</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">lucas.moreau@gmail.com</field>
+        <field name="phone">0612345678</field>
+        <field name="street">5 Rue des Étudiants</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31000</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_simon" model="res.partner">
+        <field name="name">Simon Emma</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">emma.simon@gmail.com</field>
+        <field name="phone">0623456789</field>
+        <field name="street">12 Avenue de la République</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31100</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_robert" model="res.partner">
+        <field name="name">Robert Hugo</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">hugo.robert@outlook.fr</field>
+        <field name="phone">0634567890</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+</odoo>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Formations -->
+    <record id="formation_bts_sio" model="limayrac.formation">
+        <field name="nom_commercial">BTS SIO - Services Informatiques aux Organisations</field>
+        <field name="description">Formation en 2 ans préparant aux métiers du numérique</field>
+    </record>
+
+    <record id="formation_bts_ndrc" model="limayrac.formation">
+        <field name="nom_commercial">BTS NDRC - Négociation et Digitalisation de la Relation Client</field>
+        <field name="description">Formation commerciale avec focus sur le digital</field>
+    </record>
+
+    <record id="formation_bachelor" model="limayrac.formation">
+        <field name="nom_commercial">Bachelor Chef de Projet Digital</field>
+        <field name="description">Formation Bac+3 en gestion de projets digitaux</field>
+    </record>
+
+    <!-- Titres RNCP -->
+    <record id="titre_sio" model="limayrac.titre.rncp">
+        <field name="code_rncp">RNCP35340</field>
+        <field name="intitule">BTS Services Informatiques aux Organisations</field>
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="date_debut">2020-01-01</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="titre_ndrc" model="limayrac.titre.rncp">
+        <field name="code_rncp">RNCP38368</field>
+        <field name="intitule">BTS Négociation et Digitalisation de la Relation Client</field>
+        <field name="formation_id" ref="formation_bts_ndrc"/>
+        <field name="date_debut">2021-01-01</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <!-- Responsables de formation -->
+    <record id="responsable_martin" model="res.partner">
+        <field name="name">Martin Sophie</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">sophie.martin@limayrac.fr</field>
+        <field name="phone">0561112233</field>
+        <field name="poste">Responsable BTS SIO</field>
+        <field name="formation_responsable_id" ref="formation_bts_sio"/>
+    </record>
+
+    <record id="responsable_durand" model="res.partner">
+        <field name="name">Durand Pierre</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">pierre.durand@limayrac.fr</field>
+        <field name="phone">0561223344</field>
+        <field name="poste">Responsable BTS NDRC</field>
+        <field name="formation_responsable_id" ref="formation_bts_ndrc"/>
+    </record>
+
+    <!-- Besoins entreprises -->
+    <record id="besoin_techcorp" model="limayrac.besoin">
+        <field name="titre">Besoin de 2 développeurs web en alternance</field>
+        <field name="structure_id" ref="limayrac_contacts.structure_techcorp"/>
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="date">2026-01-10</field>
+        <field name="description">Recherche 2 alternants pour renforcer l'équipe de développement</field>
+        <field name="state">en_cours</field>
+    </record>
+
+    <record id="besoin_digitup" model="limayrac.besoin">
+        <field name="titre">Alternant Marketing Digital</field>
+        <field name="structure_id" ref="limayrac_contacts.structure_digitup"/>
+        <field name="formation_id" ref="formation_bts_ndrc"/>
+        <field name="date">2026-02-15</field>
+        <field name="description">Besoin d'un alternant pour gérer les réseaux sociaux</field>
+        <field name="state">nouveau</field>
+    </record>
+</odoo>

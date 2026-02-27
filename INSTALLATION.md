@@ -45,12 +45,19 @@
      - Limayrac - Formations
      - Limayrac - Candidatures
      - Limayrac - Contrats
+   
+   **💡 Astuce : Installer avec les données de démonstration**
+   - Lors de l'installation, si vous voulez des données de test, assurez-vous que l'option "Charger les données de démonstration" est cochée
+   - Cela créera automatiquement : 3 formations, 2 titres RNCP, 3 entreprises, 3 services, 7 personnes, 3 vœux, 2 cursus, 2 contrats
 
 #### Méthode 2 : Via la ligne de commande
 
 ```bash
-# Installation du module principal qui installera automatiquement tous les autres
+# Installation SANS données de démonstration
 ./odoo-bin -d nom_base_de_donnees -i limayrac_contrat --stop-after-init
+
+# Installation AVEC données de démonstration (recommandé pour tester)
+./odoo-bin -d nom_base_de_donnees -i limayrac_contrat --stop-after-init --without-demo=False
 ```
 
 ### 3. Vérification
@@ -75,9 +82,32 @@ Après installation, vous devriez voir dans le menu principal :
    - Créer 2-3 entreprises tests avec SIRET
 
 3. **Créer des personnes**
-   - Menu : Limayrac → Contacts → Personnes
-   - Créer quelques profils : candidats, intervenants, tuteurs
+   🎯 Données de démonstration
 
+### Option 1 : Mode démo automatique (Recommandé)
+
+Les modules incluent maintenant un **mode démo intégré** ! Lors de l'installation :
+
+1. **Via l'interface** : Cochez "Charger les données de démonstration" lors de l'installation
+2. **Via la ligne de commande** : Ajoutez `--without-demo=False` à la commande d'installation
+
+**Données créées automatiquement :**
+- ✅ 3 formations (BTS SIO, BTS NDRC, Bachelor)
+- ✅ 2 titres RNCP
+- ✅ 3 structures entreprises avec SIRET
+- ✅ 3 services
+- ✅ 2 responsables de formation
+- ✅ 2 intervenants
+- ✅ 3 tuteurs entreprise
+- ✅ 3 candidats/apprenants
+- ✅ 3 vœux (dont 2 acceptés)
+- ✅ 2 cursus actifs
+- ✅ 2 contrats d'alternance
+- ✅ 2 besoins entreprises
+
+### Option 2 : Script Python manuel
+
+Si vous préférez créer des données manuell
 ## Données de démonstration (optionnel)
 
 Pour créer des données de test rapidement, vous pouvez utiliser ce script Python dans une console Odoo :

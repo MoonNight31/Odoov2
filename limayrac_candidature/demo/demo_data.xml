@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vœux -->
+    <record id="voeux_moreau" model="limayrac.voeux">
+        <field name="apprenant_id" ref="limayrac_contacts.candidat_moreau"/>
+        <field name="formation_id" ref="limayrac_formation.formation_bts_sio"/>
+        <field name="date_candidature">2026-01-15</field>
+        <field name="notes">Candidat motivé avec des bases en programmation</field>
+        <field name="state">accepte</field>
+    </record>
+
+    <record id="voeux_simon" model="limayrac.voeux">
+        <field name="apprenant_id" ref="limayrac_contacts.candidat_simon"/>
+        <field name="formation_id" ref="limayrac_formation.formation_bts_ndrc"/>
+        <field name="date_candidature">2026-01-20</field>
+        <field name="notes">Excellente communication, expérience en vente</field>
+        <field name="state">accepte</field>
+    </record>
+
+    <record id="voeux_robert" model="limayrac.voeux">
+        <field name="apprenant_id" ref="limayrac_contacts.candidat_robert"/>
+        <field name="formation_id" ref="limayrac_formation.formation_bachelor"/>
+        <field name="date_candidature">2026-02-01</field>
+        <field name="state">en_cours</field>
+    </record>
+
+    <!-- Cursus -->
+    <record id="cursus_moreau" model="limayrac.cursus">
+        <field name="apprenant_id" ref="limayrac_contacts.candidat_moreau"/>
+        <field name="formation_id" ref="limayrac_formation.formation_bts_sio"/>
+        <field name="date_debut">2026-09-01</field>
+        <field name="date_fin">2028-06-30</field>
+        <field name="is_diplome" eval="False"/>
+    </record>
+
+    <record id="cursus_simon" model="limayrac.cursus">
+        <field name="apprenant_id" ref="limayrac_contacts.candidat_simon"/>
+        <field name="formation_id" ref="limayrac_formation.formation_bts_ndrc"/>
+        <field name="date_debut">2026-09-01</field>
+        <field name="date_fin">2028-06-30</field>
+        <field name="is_diplome" eval="False"/>
+    </record>
+</odoo>

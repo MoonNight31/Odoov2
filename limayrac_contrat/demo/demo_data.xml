@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Contrats -->
+    <record id="contrat_moreau" model="limayrac.contrat">
+        <field name="apprenant_id" ref="limayrac_contacts.candidat_moreau"/>
+        <field name="cursus_id" ref="limayrac_candidature.cursus_moreau"/>
+        <field name="service_id" ref="limayrac_contacts.service_dev"/>
+        <field name="type_contrat">apprentissage</field>
+        <field name="type_activite">Développement d'applications web</field>
+        <field name="date_debut">2026-09-01</field>
+        <field name="date_fin">2028-08-31</field>
+        <field name="tuteur_entreprise_id" ref="limayrac_contacts.tuteur_dubois"/>
+        <field name="tuteur_ecole_id" ref="limayrac_contacts.intervenant_lefebvre"/>
+        <field name="notation">4</field>
+        <field name="commentaire">Excellent apprenant, très investi dans ses missions</field>
+    </record>
+
+    <record id="contrat_simon" model="limayrac.contrat">
+        <field name="apprenant_id" ref="limayrac_contacts.candidat_simon"/>
+        <field name="cursus_id" ref="limayrac_candidature.cursus_simon"/>
+        <field name="service_id" ref="limayrac_contacts.service_marketing"/>
+        <field name="type_contrat">professionnalisation</field>
+        <field name="type_activite">Gestion de campagnes digitales et réseaux sociaux</field>
+        <field name="date_debut">2026-09-01</field>
+        <field name="date_fin">2028-08-31</field>
+        <field name="tuteur_entreprise_id" ref="limayrac_contacts.tuteur_laurent"/>
+        <field name="tuteur_ecole_id" ref="limayrac_contacts.intervenant_bernard"/>
+        <field name="notation">5</field>
+        <field name="commentaire">Très bon relationnel, excellent potentiel commercial</field>
+    </record>
+</odoo>
