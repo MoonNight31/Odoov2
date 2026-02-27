@@ -8,7 +8,6 @@
         <field name="arch" type="xml">
             <!-- Ajouter les champs spécifiques pour les personnes -->
             <xpath expr="//field[@name='function']" position="after">
-                <field name="poste"/>
                 <field name="service_id" domain="[('is_active', '=', True)]"/>
                 <field name="formation_responsable_id" invisible="is_company"/>
             </xpath>

@@ -6,7 +6,6 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     # Champs spécifiques pour les personnes
-    poste = fields.Char(string='Poste')
     is_alumni = fields.Boolean(string='Alumni', default=False)
     is_candidat = fields.Boolean(string='Candidat', default=False)
     is_apprenant = fields.Boolean(string='Apprenant', default=False)
