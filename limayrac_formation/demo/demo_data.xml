@@ -39,7 +39,7 @@
         <field name="is_company" eval="False"/>
         <field name="email">sophie.martin@limayrac.fr</field>
         <field name="phone">0561112233</field>
-        <field name="poste">Responsable BTS SIO</field>
+        <field name="function">Responsable BTS SIO</field>
         <field name="formation_responsable_id" ref="formation_bts_sio"/>
     </record>
 
@@ -48,7 +48,7 @@
         <field name="is_company" eval="False"/>
         <field name="email">pierre.durand@limayrac.fr</field>
         <field name="phone">0561223344</field>
-        <field name="poste">Responsable BTS NDRC</field>
+        <field name="function">Responsable BTS NDRC</field>
         <field name="formation_responsable_id" ref="formation_bts_ndrc"/>
     </record>
 
