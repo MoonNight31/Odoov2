@@ -133,7 +133,7 @@ tuteur_ecole_1 = env['res.partner'].create({
     'email': 'sophie.martin@limayrac.fr',
     'phone': '0561111111',
     'is_intervenant': True,
-    'poste': 'Formatrice Informatique',
+    'function': 'Formatrice Informatique',
 })
 
 tuteur_ecole_2 = env['res.partner'].create({
@@ -141,7 +141,7 @@ tuteur_ecole_2 = env['res.partner'].create({
     'email': 'thomas.bernard@limayrac.fr',
     'phone': '0561222222',
     'is_intervenant': True,
-    'poste': 'Formateur Commerce',
+    'function': 'Formateur Commerce',
 })
 
 # Responsables de formation
@@ -149,7 +149,7 @@ responsable_sio = env['res.partner'].create({
     'name': 'Durand Philippe',
     'email': 'philippe.durand@limayrac.fr',
     'phone': '0561333333',
-    'poste': 'Responsable BTS SIO',
+    'function': 'Responsable BTS SIO',
     'formation_responsable_id': formation_bts_sio.id,
 })
 
@@ -157,7 +157,7 @@ responsable_sio_2 = env['res.partner'].create({
     'name': 'Rousseau Céline',
     'email': 'celine.rousseau@limayrac.fr',
     'phone': '0561444444',
-    'poste': 'Co-responsable BTS SIO',
+    'function': 'Co-responsable BTS SIO',
     'formation_responsable_id': formation_bts_sio.id,
 })
 
@@ -165,7 +165,7 @@ responsable_ndrc = env['res.partner'].create({
     'name': 'Lambert Vincent',
     'email': 'vincent.lambert@limayrac.fr',
     'phone': '0561555555',
-    'poste': 'Responsable BTS NDRC',
+    'function': 'Responsable BTS NDRC',
     'formation_responsable_id': formation_bts_ndrc.id,
 })
 
@@ -173,7 +173,7 @@ responsable_bachelor = env['res.partner'].create({
     'name': 'Fontaine Isabelle',
     'email': 'isabelle.fontaine@limayrac.fr',
     'phone': '0561666666',
-    'poste': 'Responsable Bachelor',
+    'function': 'Responsable Bachelor',
     'formation_responsable_id': formation_bachelor_dev.id,
 })
 
@@ -183,7 +183,7 @@ tuteur_entreprise_1 = env['res.partner'].create({
     'email': 'michel.dubois@techcorp.fr',
     'phone': '0661111111',
     'is_tuteur': True,
-    'poste': 'Chef de projet',
+    'function': 'Chef de projet',
     'service_id': service_techcorp_dev.id,
 })
 
@@ -192,7 +192,7 @@ tuteur_entreprise_2 = env['res.partner'].create({
     'email': 'claire.leroy@digitalpartners.fr',
     'phone': '0662222222',
     'is_tuteur': True,
-    'poste': 'Responsable technique',
+    'function': 'Responsable technique',
     'service_id': service_digital_web.id,
 })
 
@@ -201,7 +201,7 @@ tuteur_entreprise_3 = env['res.partner'].create({
     'email': 'pierre.petit@commerceplus.fr',
     'phone': '0663333333',
     'is_tuteur': True,
-    'poste': 'Directeur commercial',
+    'function': 'Directeur commercial',
     'service_id': service_commerce_vente.id,
 })
 
@@ -243,7 +243,7 @@ alumni_1 = env['res.partner'].create({
     'phone': '0604050607',
     'is_alumni': True,
     'is_apprenant': False,
-    'poste': 'Développeuse Full Stack',
+    'function': 'Développeuse Full Stack',
 })
 
 print(f"✓ 13 personnes créées (2 intervenants, 4 responsables, 3 tuteurs, 3 candidats, 1 alumni)")
