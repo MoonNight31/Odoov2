@@ -43,7 +43,7 @@
                                     <field name="name"/>
                                     <field name="email"/>
                                     <field name="phone"/>
-                                    <field name="poste"/>
+                                    <field name="function"/>
                                 </tree>
                             </field>
                         </page>

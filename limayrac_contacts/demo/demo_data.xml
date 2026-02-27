@@ -79,7 +79,7 @@
         <field name="is_company" eval="False"/>
         <field name="email">jean.lefebvre@limayrac.fr</field>
         <field name="phone">0561334455</field>
-        <field name="poste">Formateur Développement</field>
+        <field name="function">Formateur Développement</field>
         <field name="is_intervenant" eval="True"/>
     </record>
 
@@ -88,7 +88,7 @@
         <field name="is_company" eval="False"/>
         <field name="email">claire.bernard@limayrac.fr</field>
         <field name="phone">0561445566</field>
-        <field name="poste">Formatrice Réseaux</field>
+        <field name="function">Formatrice Réseaux</field>
         <field name="is_intervenant" eval="True"/>
     </record>
 
@@ -98,7 +98,7 @@
         <field name="is_company" eval="False"/>
         <field name="email">thomas.dubois@techcorp-solutions.fr</field>
         <field name="phone">0561556677</field>
-        <field name="poste">Lead Developer</field>
+        <field name="function">Lead Developer</field>
         <field name="service_id" ref="service_dev"/>
         <field name="is_tuteur" eval="True"/>
     </record>
@@ -108,7 +108,7 @@
         <field name="is_company" eval="False"/>
         <field name="email">marie.laurent@digitup.fr</field>
         <field name="phone">0562667788</field>
-        <field name="poste">Responsable Marketing</field>
+        <field name="function">Responsable Marketing</field>
         <field name="service_id" ref="service_marketing"/>
         <field name="is_tuteur" eval="True"/>
     </record>
@@ -118,7 +118,7 @@
         <field name="is_company" eval="False"/>
         <field name="email">alexandre.petit@innovtech.com</field>
         <field name="phone">0563778899</field>
-        <field name="poste">Architecte Cloud</field>
+        <field name="function">Architecte Cloud</field>
         <field name="service_id" ref="service_infrastructure"/>
         <field name="is_tuteur" eval="True"/>
     </record>
