@@ -5,6 +5,9 @@ from odoo import models, fields, api
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
+    # Alias temporaire pour compatibilité avec anciennes vues
+    poste = fields.Char(string='Poste', related='function', store=False, readonly=False)
+    
     # Champs spécifiques pour les personnes
     is_alumni = fields.Boolean(string='Alumni', default=False)
     is_candidat = fields.Boolean(string='Candidat', default=False)
