@@ -11,11 +11,7 @@
                 <field name="structure_id"/>
                 <field name="formation_id"/>
                 <field name="date"/>
-                <field name="state" widget="badge" 
-                       decoration-success="state == 'traite'"
-                       decoration-info="state == 'en_cours'"
-                       decoration-danger="state == 'nouveau'"
-                       decoration-muted="state == 'annule'"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
