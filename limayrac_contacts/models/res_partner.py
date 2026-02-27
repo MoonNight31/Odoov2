@@ -50,12 +50,3 @@ class ResPartner(models.Model):
             vals['groupe_structure_id'] = groupe.id
         
         return super(ResPartner, self).create(vals)
-    
-    @api.onchange('is_apprenant', 'is_candidat', 'is_intervenant', 'is_tuteur', 'is_alumni', 'formation_responsable_id')
-    def _onchange_roles(self):
-        """Mettre à jour automatiquement le champ company_type si c'est une personne avec un rôle"""
-        has_role = any([self.is_apprenant, self.is_candidat, self.is_intervenant, self.is_tuteur, self.is_alumni])
-        has_formation = self.formation_responsable_id and self.formation_responsable_id.id
-        
-        if has_role or has_formation:
-            self.company_type = 'person'
