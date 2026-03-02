@@ -16,14 +16,13 @@
         </field>
     </record>
 
-    <!-- Vue Pivot - Tableau croisé Formation x Entreprise -->
+    <!-- Vue Pivot - Tableau croisé Structure x État -->
     <record id="view_limayrac_besoin_pivot" model="ir.ui.view">
         <field name="name">limayrac.besoin.pivot</field>
         <field name="model">limayrac.besoin</field>
         <field name="arch" type="xml">
             <pivot string="Analyse Besoins" sample="1">
-                <field name="formation_id" type="row"/>
-                <field name="structure_id" type="col"/>
+                <field name="structure_id" type="row"/>
                 <field name="state" type="col"/>
             </pivot>
         </field>
@@ -34,8 +33,8 @@
         <field name="name">limayrac.besoin.graph</field>
         <field name="model">limayrac.besoin</field>
         <field name="arch" type="xml">
-            <graph string="Besoins par Formation" type="bar" sample="1">
-                <field name="formation_id"/>
+            <graph string="Besoins par Structure" type="bar" sample="1">
+                <field name="structure_id"/>
                 <field name="state" type="col"/>
             </graph>
         </field>
@@ -49,7 +48,6 @@
             <kanban default_group_by="state" class="o_kanban_small_column">
                 <field name="titre"/>
                 <field name="structure_id"/>
-                <field name="formation_id"/>
                 <field name="state"/>
                 <field name="date"/>
                 <templates>
@@ -61,8 +59,6 @@
                                 </div>
                             </div>
                             <div class="o_kanban_record_body">
-                                <field name="formation_id"/>
-                                <br/>
                                 <field name="structure_id"/>
                             </div>
                             <div class="o_kanban_record_bottom">
@@ -101,14 +97,10 @@
                     <group>
                         <field name="description"/>
                     </group>
+                    <group>
+                        <field name="notes"/>
+                    </group>
                     <notebook>
-                        <page string="Formations">
-                            <field name="formation_ids">
-                                <tree>
-                                    <field name="nom_commercial"/>
-                                </tree>
-                            </field>
-                        </page>
                         <page string="Opportunités">
                             <field name="opportunite_ids">
                                 <tree>
@@ -118,9 +110,6 @@
                             </field>
                         </page>
                     </notebook>
-                    <group>
-                        <field name="notes"/>
-                    </group>
                 </sheet>
             </form>
         </field>
@@ -134,12 +123,10 @@
             <search>
                 <field name="titre"/>
                 <field name="structure_id"/>
-                <field name="formation_id"/>
                 <filter string="Nouveau" name="nouveau" domain="[('state', '=', 'nouveau')]"/>
                 <filter string="En cours" name="en_cours" domain="[('state', '=', 'en_cours')]"/>
                 <filter string="Traité" name="traite" domain="[('state', '=', 'traite')]"/>
                 <group expand="0" string="Grouper par">
-                    <filter string="Formation" name="group_formation" context="{'group_by': 'formation_id'}"/>
                     <filter string="Structure" name="group_structure" context="{'group_by': 'structure_id'}"/>
                     <filter string="État" name="group_state" context="{'group_by': 'state'}"/>
                 </group>

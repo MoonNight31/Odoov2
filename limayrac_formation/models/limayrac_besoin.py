@@ -14,7 +14,6 @@ class LimayracBesoin(models.Model):
     date = fields.Date(string='Date', default=fields.Date.today, required=True)
     
     # Relations avec formation via opportunités
-    formation_ids = fields.Many2many('limayrac.formation', 'limayrac_opportunite', 'besoin_id', 'formation_id', string='Formations')
     opportunite_ids = fields.One2many('limayrac.opportunite', 'besoin_id', string='Opportunités')
     
     # Relation avec structure

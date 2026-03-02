@@ -19,7 +19,6 @@ class LimayracFormation(models.Model):
     
     # Relations
     titre_rncp_ids = fields.One2many('limayrac.titre.rncp', 'formation_id', string='Titres RNCP')
-    besoin_ids = fields.Many2many('limayrac.besoin', 'limayrac_opportunite', 'formation_id', 'besoin_id', string='Besoins')
     opportunite_ids = fields.One2many('limayrac.opportunite', 'formation_id', string='Opportunités')
     responsable_ids = fields.One2many('res.partner', 'formation_responsable_id', string='Responsables')
     

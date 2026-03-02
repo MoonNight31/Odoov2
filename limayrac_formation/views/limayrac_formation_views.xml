@@ -66,16 +66,6 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Besoins">
-                            <field name="besoin_ids">
-                                <tree>
-                                    <field name="titre"/>
-                                    <field name="structure_id"/>
-                                    <field name="date"/>
-                                    <field name="state"/>
-                                </tree>
-                            </field>
-                        </page>
                         <page string="Opportunités">
                             <field name="opportunite_ids">
                                 <tree>
