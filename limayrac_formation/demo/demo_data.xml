@@ -55,8 +55,8 @@
     <!-- Besoins entreprises -->
     <record id="besoin_techcorp" model="limayrac.besoin">
         <field name="titre">Besoin de 2 développeurs web en alternance</field>
+        <field name="poste">Développeur Web</field>
         <field name="structure_id" ref="limayrac_contacts.structure_techcorp"/>
-        <field name="formation_id" ref="formation_bts_sio"/>
         <field name="date">2026-01-10</field>
         <field name="description">Recherche 2 alternants pour renforcer l'équipe de développement</field>
         <field name="state">en_cours</field>
@@ -64,10 +64,21 @@
 
     <record id="besoin_digitup" model="limayrac.besoin">
         <field name="titre">Alternant Marketing Digital</field>
+        <field name="poste">Chargé de Marketing Digital</field>
         <field name="structure_id" ref="limayrac_contacts.structure_digitup"/>
-        <field name="formation_id" ref="formation_bts_ndrc"/>
         <field name="date">2026-02-15</field>
         <field name="description">Besoin d'un alternant pour gérer les réseaux sociaux</field>
         <field name="state">nouveau</field>
+    </record>
+    
+    <!-- Opportunités (lien entre formations et besoins) -->
+    <record id="opportunite_techcorp_sio" model="limayrac.opportunite">
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="besoin_id" ref="besoin_techcorp"/>
+    </record>
+    
+    <record id="opportunite_digitup_ndrc" model="limayrac.opportunite">
+        <field name="formation_id" ref="formation_bts_ndrc"/>
+        <field name="besoin_id" ref="besoin_digitup"/>
     </record>
 </odoo>
