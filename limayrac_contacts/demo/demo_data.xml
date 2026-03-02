@@ -153,4 +153,21 @@
         <field name="phone">0634567890</field>
         <field name="is_candidat" eval="True"/>
     </record>
+
+    <!-- Types d'activité -->
+    <record id="activite_informatique" model="limayrac.type.activite">
+        <field name="intitule">Informatique et développement</field>
+    </record>
+
+    <record id="activite_marketing" model="limayrac.type.activite">
+        <field name="intitule">Marketing et communication digitale</field>
+    </record>
+
+    <record id="activite_gestion" model="limayrac.type.activite">
+        <field name="intitule">Gestion de projet digital</field>
+    </record>
+
+    <record id="activite_commerce" model="limayrac.type.activite">
+        <field name="intitule">Commerce et relation client</field>
+    </record>
 </odoo>

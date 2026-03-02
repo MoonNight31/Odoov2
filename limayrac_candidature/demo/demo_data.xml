@@ -5,23 +5,28 @@
         <field name="apprenant_id" ref="limayrac_contacts.candidat_moreau"/>
         <field name="formation_id" ref="limayrac_formation.formation_bts_sio"/>
         <field name="date_candidature">2026-01-15</field>
-        <field name="notes">Candidat motivé avec des bases en programmation</field>
+        <field name="type_contrat_souhaite">alternance</field>
+        <field name="note_rp">Candidat motivé avec des bases en programmation</field>
         <field name="state">accepte</field>
+        <field name="entreprise_id" ref="limayrac_contacts.structure_techcorp"/>
     </record>
 
     <record id="voeux_simon" model="limayrac.voeux">
         <field name="apprenant_id" ref="limayrac_contacts.candidat_simon"/>
         <field name="formation_id" ref="limayrac_formation.formation_bts_ndrc"/>
         <field name="date_candidature">2026-01-20</field>
-        <field name="notes">Excellente communication, expérience en vente</field>
+        <field name="type_contrat_souhaite">alternance</field>
+        <field name="note_rp">Excellente communication, expérience en vente</field>
         <field name="state">accepte</field>
+        <field name="entreprise_id" ref="limayrac_contacts.structure_digitup"/>
     </record>
 
     <record id="voeux_robert" model="limayrac.voeux">
         <field name="apprenant_id" ref="limayrac_contacts.candidat_robert"/>
         <field name="formation_id" ref="limayrac_formation.formation_bachelor"/>
         <field name="date_candidature">2026-02-01</field>
-        <field name="state">en_cours</field>
+        <field name="type_contrat_souhaite">stage</field>
+        <field name="state">rp_evaluation</field>
     </record>
 
     <!-- Cursus -->
