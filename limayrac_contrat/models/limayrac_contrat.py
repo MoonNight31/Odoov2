@@ -19,7 +19,8 @@ class LimayracContrat(models.Model):
         ('stage', 'Convention de stage'),
     ], string='Type de contrat', required=True, tracking=True)
     
-    type_activite = fields.Char(string='Type d\'activité', tracking=True)
+    description_mission = fields.Text(string='Description de la mission', tracking=True)
+    activite_id = fields.Many2one('limayrac.type.activite', string='Type d\'activité', tracking=True)
     
     date_debut = fields.Date(string='Date de début', required=True, tracking=True)
     date_fin = fields.Date(string='Date de fin', tracking=True)

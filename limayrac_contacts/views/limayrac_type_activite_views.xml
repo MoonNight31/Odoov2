@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue Tree pour Type d'activité -->
+    <record id="view_limayrac_type_activite_tree" model="ir.ui.view">
+        <field name="name">limayrac.type.activite.tree</field>
+        <field name="model">limayrac.type.activite</field>
+        <field name="arch" type="xml">
+            <tree string="Types d'activité">
+                <field name="intitule"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue Form pour Type d'activité -->
+    <record id="view_limayrac_type_activite_form" model="ir.ui.view">
+        <field name="name">limayrac.type.activite.form</field>
+        <field name="model">limayrac.type.activite</field>
+        <field name="arch" type="xml">
+            <form string="Type d'activité">
+                <sheet>
+                    <group>
+                        <field name="intitule"/>
+                        <field name="description"/>
+                    </group>
+                    <notebook>
+                        <page string="Services associés">
+                            <field name="service_ids">
+                                <tree>
+                                    <field name="type_service"/>
+                                    <field name="structure_id"/>
+                                    <field name="is_active"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action pour Type d'activité -->
+    <record id="action_limayrac_type_activite" model="ir.actions.act_window">
+        <field name="name">Types d'activité</field>
+        <field name="res_model">limayrac.type.activite</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouveau type d'activité
+            </p>
+        </field>
+    </record>
+</odoo>

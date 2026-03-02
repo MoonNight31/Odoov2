@@ -34,4 +34,10 @@
               parent="menu_limayrac_contacts"
               action="action_limayrac_groupe_structure"
               sequence="40"/>
+
+    <menuitem id="menu_limayrac_type_activite"
+              name="Types d'activité"
+              parent="menu_limayrac_contacts"
+              action="action_limayrac_type_activite"
+              sequence="50"/>
 </odoo>

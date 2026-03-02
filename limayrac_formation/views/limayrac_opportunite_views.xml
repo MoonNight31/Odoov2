@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue Tree pour Opportunité -->
+    <record id="view_limayrac_opportunite_tree" model="ir.ui.view">
+        <field name="name">limayrac.opportunite.tree</field>
+        <field name="model">limayrac.opportunite</field>
+        <field name="arch" type="xml">
+            <tree string="Opportunités">
+                <field name="id_opportunite"/>
+                <field name="formation_id"/>
+                <field name="besoin_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue Form pour Opportunité -->
+    <record id="view_limayrac_opportunite_form" model="ir.ui.view">
+        <field name="name">limayrac.opportunite.form</field>
+        <field name="model">limayrac.opportunite</field>
+        <field name="arch" type="xml">
+            <form string="Opportunité">
+                <sheet>
+                    <group>
+                        <field name="id_opportunite" readonly="1"/>
+                        <field name="formation_id"/>
+                        <field name="besoin_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action pour Opportunité -->
+    <record id="action_limayrac_opportunite" model="ir.actions.act_window">
+        <field name="name">Opportunités</field>
+        <field name="res_model">limayrac.opportunite</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer une nouvelle opportunité
+            </p>
+        </field>
+    </record>
+</odoo>

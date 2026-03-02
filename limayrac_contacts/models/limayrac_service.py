@@ -19,8 +19,9 @@ class LimayracService(models.Model):
     date_created = fields.Datetime(string='Date de création', default=fields.Datetime.now, readonly=True)
     date_updated = fields.Datetime(string='Date de mise à jour', readonly=True)
     
-    # Personnes liées à ce service
+    # Relations
     personne_ids = fields.One2many('res.partner', 'service_id', string='Personnes')
+    type_activite_ids = fields.Many2many('limayrac.type.activite', string='Types d\'activité')
     
     @api.model
     def create(self, vals):

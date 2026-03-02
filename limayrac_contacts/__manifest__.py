@@ -20,6 +20,7 @@
         'views/res_partner_views.xml',
         'views/limayrac_service_views.xml',
         'views/limayrac_groupe_structure_views.xml',
+        'views/limayrac_type_activite_views.xml',
         'views/menus.xml',
     ],
     'demo': [

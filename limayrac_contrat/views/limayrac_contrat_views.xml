@@ -42,13 +42,16 @@
                     <group>
                         <group string="Informations du contrat">
                             <field name="type_contrat"/>
-                            <field name="type_activite"/>
+                            <field name="activite_id"/>
                             <field name="date_debut"/>
                             <field name="date_fin"/>
                         </group>
                         <group string="Notation">
                             <field name="notation" widget="priority"/>
                         </group>
+                    </group>
+                    <group string="Description de la mission">
+                        <field name="description_mission" nolabel="1" placeholder="Décrivez la mission de l'apprenant..."/>
                     </group>
                     <group>
                         <group string="Apprenant">

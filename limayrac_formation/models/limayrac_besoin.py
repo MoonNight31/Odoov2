@@ -10,9 +10,14 @@ class LimayracBesoin(models.Model):
 
     titre = fields.Char(string='Titre', required=True)
     description = fields.Text(string='Description')
+    poste = fields.Char(string='Poste')
     date = fields.Date(string='Date', default=fields.Date.today, required=True)
     
-    formation_id = fields.Many2one('limayrac.formation', string='Formation', required=True)
+    # Relations avec formation via opportunités
+    formation_ids = fields.Many2many('limayrac.formation', 'limayrac_opportunite', 'besoin_id', 'formation_id', string='Formations')
+    opportunite_ids = fields.One2many('limayrac.opportunite', 'besoin_id', string='Opportunités')
+    
+    # Relation avec structure
     structure_id = fields.Many2one('res.partner', string='Structure', 
                                    domain=[('is_company', '=', True)],
                                    required=True)

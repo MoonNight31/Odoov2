@@ -29,4 +29,10 @@
               parent="menu_limayrac_formation"
               action="action_limayrac_besoin_tableau"
               sequence="35"/>
+
+    <menuitem id="menu_limayrac_opportunite"
+              name="Opportunités"
+              parent="menu_limayrac_formation"
+              action="action_limayrac_opportunite"
+              sequence="40"/>
 </odoo>

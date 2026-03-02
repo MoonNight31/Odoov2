@@ -19,6 +19,7 @@
         'views/limayrac_formation_views.xml',
         'views/limayrac_titre_rncp_views.xml',
         'views/limayrac_besoin_views.xml',
+        'views/limayrac_opportunite_views.xml',
         'views/menus.xml',
     ],
     'demo': [

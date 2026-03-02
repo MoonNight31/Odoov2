@@ -33,6 +33,11 @@
                                 class="oe_stat_button" icon="fa-user">
                             <field name="responsable_count" string="Responsables" widget="statinfo"/>
                         </button>
+                        <button name="%(action_limayrac_opportunite)d" type="action" 
+                                class="oe_stat_button" icon="fa-lightbulb-o"
+                                context="{'search_default_formation_id': active_id}">
+                            <field name="opportunite_count" string="Opportunités" widget="statinfo"/>
+                        </button>
                     </div>
                     <group>
                         <field name="nom_commercial"/>
@@ -41,6 +46,15 @@
                         <field name="description"/>
                     </group>
                     <notebook>
+                        <page string="Questions Jury">
+                            <group>
+                                <field name="Question1" placeholder="Question 1 pour le jury..."/>
+                                <field name="Question2" placeholder="Question 2 pour le jury..."/>
+                                <field name="Question3" placeholder="Question 3 pour le jury..."/>
+                                <field name="Question4" placeholder="Question 4 pour le jury..."/>
+                                <field name="Question5" placeholder="Question 5 pour le jury..."/>
+                            </group>
+                        </page>
                         <page string="Titres RNCP">
                             <field name="titre_rncp_ids">
                                 <tree editable="bottom">
@@ -59,6 +73,14 @@
                                     <field name="structure_id"/>
                                     <field name="date"/>
                                     <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Opportunités">
+                            <field name="opportunite_ids">
+                                <tree>
+                                    <field name="id_opportunite"/>
+                                    <field name="besoin_id"/>
                                 </tree>
                             </field>
                         </page>
