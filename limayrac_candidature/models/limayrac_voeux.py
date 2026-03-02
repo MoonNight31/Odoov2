@@ -49,29 +49,29 @@ class LimayracVoeux(models.Model):
     
     # Notes et commentaires (TEXTE)
     description_mission = fields.Text(string='Description de la mission')
-    Note_RP = fields.Text(string='Note RP (Commentaire)')
-    Note_CFP = fields.Text(string='Note CFP (Commentaire)')
-    Note_SRE = fields.Text(string='Note SRE (Commentaire)')
-    Note_Jury = fields.Text(string='Note Jury (Commentaire)')
+    note_rp = fields.Text(string='Note RP (Commentaire)')
+    note_cfp = fields.Text(string='Note CFP (Commentaire)')
+    note_sre = fields.Text(string='Note SRE (Commentaire)')
+    note_jury = fields.Text(string='Note Jury (Commentaire)')
     
     # Indicateurs booléens
     is_besoin = fields.Boolean(string='Lié à un besoin', default=False)
     is_kairos = fields.Boolean(string='Kaïros', default=False)
     is_alternant = fields.Boolean(string='Alternant', default=False)
-    is_presenceCoaching = fields.Boolean(string='Présence Coaching', default=False)
+    is_presence_coaching = fields.Boolean(string='Présence Coaching', default=False)
     
     # Date du jury
-    Date_Jury = fields.Date(string='Date du Jury')
+    date_jury = fields.Date(string='Date du Jury')
     
     # Notes de questions (CHIFFRES)
-    Note_Q1 = fields.Float(string='Note Question 1', digits=(3, 2))
-    Note_Q2 = fields.Float(string='Note Question 2', digits=(3, 2))
-    Note_Q3 = fields.Float(string='Note Question 3', digits=(3, 2))
-    Note_Q4 = fields.Float(string='Note Question 4', digits=(3, 2))
-    Note_Q5 = fields.Float(string='Note Question 5', digits=(3, 2))
+    note_q1 = fields.Float(string='Note Question 1', digits=(3, 2))
+    note_q2 = fields.Float(string='Note Question 2', digits=(3, 2))
+    note_q3 = fields.Float(string='Note Question 3', digits=(3, 2))
+    note_q4 = fields.Float(string='Note Question 4', digits=(3, 2))
+    note_q5 = fields.Float(string='Note Question 5', digits=(3, 2))
     
     # Moyenne des notes de questions
-    Note_Moyenne = fields.Float(string='Note Moyenne', compute='_compute_note_moyenne', store=True)
+    note_moyenne = fields.Float(string='Note Moyenne', compute='_compute_note_moyenne', store=True)
     
     # Relations avec les jurys (PERSONNE)
     jury1_id = fields.Many2one('res.partner', string='Jury 1', 
@@ -102,15 +102,15 @@ class LimayracVoeux(models.Model):
             else:
                 record.id_voeux = "Nouveau"
     
-    @api.depends('Note_Q1', 'Note_Q2', 'Note_Q3', 'Note_Q4', 'Note_Q5')
+    @api.depends('note_q1', 'note_q2', 'note_q3', 'note_q4', 'note_q5')
     def _compute_note_moyenne(self):
         for record in self:
-            notes = [record.Note_Q1, record.Note_Q2, record.Note_Q3, record.Note_Q4, record.Note_Q5]
+            notes = [record.note_q1, record.note_q2, record.note_q3, record.note_q4, record.note_q5]
             notes_valides = [n for n in notes if n > 0]
             if notes_valides:
-                record.Note_Moyenne = sum(notes_valides) / len(notes_valides)
+                record.note_moyenne = sum(notes_valides) / len(notes_valides)
             else:
-                record.Note_Moyenne = 0.0
+                record.note_moyenne = 0.0
     
     @api.model
     def create(self, vals):

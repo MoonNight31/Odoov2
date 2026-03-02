@@ -18,8 +18,8 @@
                 <field name="date_candidature"/>
                 <field name="state"/>
                 <field name="date_rdv_jury"/>
-                <field name="Date_Jury"/>
-                <field name="Note_Moyenne" widget="progressbar"/>
+                <field name="date_jury"/>
+                <field name="note_moyenne" widget="progressbar"/>
                 <field name="is_alternant"/>
             </tree>
         </field>
@@ -105,20 +105,19 @@
                             <field name="date_rdv_jury" readonly="state not in ['rp_evaluation', 'cfp_rdv_jury']"/>
                         </group>
                         <group>
-                            <field name="Date_Jury" readonly="state != 'rp_passage_jury'"/>
+                            <field name="date_jury" readonly="state != 'rp_passage_jury'"/>
                         </group>
                     </group>
                     
                     <group>
                         <group string="Statuts">
-                            <field name="statut_SRE"/>
                             <field name="is_besoin"/>
                             <field name="is_kairos"/>
                             <field name="is_alternant"/>
-                            <field name="is_presenceCoaching"/>
+                            <field name="is_presence_coaching"/>
                         </group>
                         <group string="Jury">
-                            <field name="Date_Jury"/>
+                            <field name="date_jury"/>
                             <field name="jury1_id"/>
                             <field name="jury2_id"/>
                         </group>
@@ -128,10 +127,10 @@
                         <page string="Notes et Commentaires">
                             <group>
                                 <group string="Commentaires (Texte)">
-                                    <field name="Note_RP" placeholder="Commentaire RP..."/>
-                                    <field name="Note_CFP" placeholder="Commentaire CFP..."/>
-                                    <field name="Note_SRE" placeholder="Commentaire SRE..."/>
-                                    <field name="Note_Jury" placeholder="Commentaire Jury..."/>
+                                    <field name="note_rp" placeholder="Commentaire RP..."/>
+                                    <field name="note_cfp" placeholder="Commentaire CFP..."/>
+                                    <field name="note_sre" placeholder="Commentaire SRE..."/>
+                                    <field name="note_jury" placeholder="Commentaire Jury..."/>
                                 </group>
                             </group>
                         </page>
@@ -139,12 +138,12 @@
                         <page string="Notes de Questions">
                             <group>
                                 <group string="Notation (Chiffres)">
-                                    <field name="Note_Q1"/>
-                                    <field name="Note_Q2"/>
-                                    <field name="Note_Q3"/>
-                                    <field name="Note_Q4"/>
-                                    <field name="Note_Q5"/>
-                                    <field name="Note_Moyenne" readonly="1" widget="progressbar"/>
+                                    <field name="note_q1"/>
+                                    <field name="note_q2"/>
+                                    <field name="note_q3"/>
+                                    <field name="note_q4"/>
+                                    <field name="note_q5"/>
+                                    <field name="note_moyenne" readonly="1" widget="progressbar"/>
                                 </group>
                             </group>
                         </page>

@@ -48,11 +48,11 @@
                     <notebook>
                         <page string="Questions Jury">
                             <group>
-                                <field name="Question1" placeholder="Question 1 pour le jury..."/>
-                                <field name="Question2" placeholder="Question 2 pour le jury..."/>
-                                <field name="Question3" placeholder="Question 3 pour le jury..."/>
-                                <field name="Question4" placeholder="Question 4 pour le jury..."/>
-                                <field name="Question5" placeholder="Question 5 pour le jury..."/>
+                                <field name="question_1" placeholder="Question 1 pour le jury..."/>
+                                <field name="question_2" placeholder="Question 2 pour le jury..."/>
+                                <field name="question_3" placeholder="Question 3 pour le jury..."/>
+                                <field name="question_4" placeholder="Question 4 pour le jury..."/>
+                                <field name="question_5" placeholder="Question 5 pour le jury..."/>
                             </group>
                         </page>
                         <page string="Titres RNCP">
