@@ -5,17 +5,21 @@
         <field name="name">limayrac.voeux.tree</field>
         <field name="model">limayrac.voeux</field>
         <field name="arch" type="xml">
-            <tree decoration-success="statut_dossier == 'accepte'" 
-                  decoration-danger="statut_dossier == 'refuse'" 
-                  decoration-muted="statut_dossier == 'annule'">
+            <tree decoration-success="state == 'accepte'" 
+                  decoration-danger="state == 'refuse'" 
+                  decoration-muted="state == 'annule'"
+                  decoration-info="state in ('cfp_validation', 'cfp_rdv_jury')"
+                  decoration-warning="state in ('rp_evaluation', 'rp_passage_jury', 'rp_validation_mission_alternance', 'rp_validation_mission_stage')"
+                  decoration-primary="state in ('sre_mission', 'sre_validation_contrat')">
                 <field name="id_voeux"/>
                 <field name="apprenant_id"/>
                 <field name="formation_id"/>
+                <field name="type_contrat_souhaite" widget="badge"/>
                 <field name="date_candidature"/>
-                <field name="statut_dossier"/>
-                <field name="statut_SRE"/>
+                <field name="state"/>
+                <field name="date_rdv_jury"/>
                 <field name="Date_Jury"/>
-                <field name="Note_Moyenne"/>
+                <field name="Note_Moyenne" widget="progressbar"/>
                 <field name="is_alternant"/>
             </tree>
         </field>
@@ -28,18 +32,57 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_accepter" string="Accepter" type="object" 
-                            class="oe_highlight" invisible="statut_dossier in ['accepte', 'refuse', 'annule']"/>
-                    <button name="action_refuser" string="Refuser" type="object" 
-                            invisible="statut_dossier in ['accepte', 'refuse', 'annule']"/>
+                    <!-- Bouton CFP: Valider importation -->
+                    <button name="action_cfp_valider_importation" string="CFP: Valider importation" type="object" 
+                            class="oe_highlight" invisible="state != 'nouveau'"/>
+                    
+                    <!-- Bouton RP: Évaluer dossier -->
+                    <button name="action_rp_evaluer_dossier" string="RP: Évaluer dossier" type="object" 
+                            class="oe_highlight" invisible="state != 'cfp_validation'"/>
+                    
+                    <!-- Bouton CFP: Fixer RDV Jury -->
+                    <button name="action_cfp_fixer_rdv_jury" string="CFP: Fixer RDV Jury" type="object" 
+                            class="oe_highlight" invisible="state != 'rp_evaluation'"/>
+                    
+                    <!-- Bouton RP: Passage Jury (se divise ensuite selon type contrat) -->
+                    <button name="action_rp_passage_jury" string="RP: Passage Jury ➜ Stage" type="object" 
+                            class="oe_highlight" invisible="state != 'cfp_rdv_jury' or type_contrat_souhaite != 'stage'"/>
+                    <button name="action_rp_passage_jury" string="RP: Passage Jury ➜ Alternance" type="object" 
+                            class="oe_highlight" invisible="state != 'cfp_rdv_jury' or type_contrat_souhaite != 'alternance'"/>
+                    
+                    <!-- ========== Parcours ALTERNANCE ========== -->
+                    <button name="action_sre_entretien_mission" string="SRE: Entretien + Mission" type="object" 
+                            class="oe_highlight" invisible="state != 'rp_passage_jury' or type_contrat_souhaite != 'alternance'"/>
+                    
+                    <button name="action_rp_valider_mission_alternance" string="RP: Valider mission" type="object" 
+                            class="oe_highlight" invisible="state != 'sre_mission'"/>
+                    
+                    <button name="action_sre_valider_contrat" string="SRE: Valider contrat + Générer CERFA" type="object" 
+                            class="oe_highlight" invisible="state != 'rp_validation_mission_alternance'"/>
+                    
+                    <!-- ========== Parcours STAGE ========== -->
+                    <button name="action_rp_valider_mission_stage" string="RP: Valider mission + Générer Convention" type="object" 
+                            class="oe_highlight" invisible="state != 'rp_validation_mission_stage'"/>
+                    
+                    <!-- Boutons secondaires -->
+                    <button name="action_refuser_dossier" string="Refuser" type="object" 
+                            class="btn-danger" invisible="state in ['accepte', 'refuse', 'annule']"/>
                     <button name="action_annuler" string="Annuler" type="object" 
-                            invisible="statut_dossier in ['refuse', 'annule']"/>
-                    <field name="statut_dossier" widget="statusbar" 
-                           statusbar_visible="nouveau,en_cours,accepte"/>
+                            invisible="state in ['accepte', 'refuse', 'annule']"/>
+                    <button name="action_reinitialiser" string="Réinitialiser" type="object" 
+                            invisible="state in ['nouveau', 'accepte']" groups="base.group_system"/>
+                    
+                    <field name="state" widget="statusbar" 
+                           statusbar_visible="nouveau,cfp_validation,rp_evaluation,cfp_rdv_jury,rp_passage_jury,sre_mission,rp_validation_mission_alternance,sre_validation_contrat,accepte"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <field name="id_voeux" invisible="1"/>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="type_contrat_souhaite" widget="badge" class="mr-2"/>
+                        </h1>
                     </div>
                     <group>
                         <group string="Informations du candidat">
@@ -50,8 +93,19 @@
                         </group>
                         <group string="Formation et entreprise">
                             <field name="formation_id"/>
+                            <field name="type_contrat_souhaite" readonly="state not in ['nouveau', 'cfp_validation']"/>
                             <field name="entreprise_id"/>
                             <field name="activite_id"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Dates importantes du workflow -->
+                    <group string="Dates du processus">
+                        <group>
+                            <field name="date_rdv_jury" readonly="state not in ['rp_evaluation', 'cfp_rdv_jury']"/>
+                        </group>
+                        <group>
+                            <field name="Date_Jury" readonly="state != 'rp_passage_jury'"/>
                         </group>
                     </group>
                     
@@ -113,12 +167,17 @@
                 <field name="apprenant_id"/>
                 <field name="formation_id"/>
                 <field name="entreprise_id"/>
-                <filter string="Nouveau" name="nouveau" domain="[('statut_dossier', '=', 'nouveau')]"/>
-                <filter string="En cours" name="en_cours" domain="[('statut_dossier', '=', 'en_cours')]"/>
-                <filter string="Accepté" name="accepte" domain="[('statut_dossier', '=', 'accepte')]"/>
-                <filter string="Refusé" name="refuse" domain="[('statut_dossier', '=', 'refuse')]"/>
+                <filter string="Portail candidature" name="nouveau" domain="[('state', '=', 'nouveau')]"/>
+                <filter string="CFP - Validation" name="cfp_validation" domain="[('state', '=', 'cfp_validation')]"/>
+                <filter string="RP - Évaluation" name="rp_evaluation" domain="[('state', '=', 'rp_evaluation')]"/>
+                <filter string="En attente Jury" name="attente_jury" domain="[('state', 'in', ['cfp_rdv_jury', 'rp_passage_jury'])]"/>
+                <filter string="Accepté" name="accepte" domain="[('state', '=', 'accepte')]"/>
+                <filter string="Refusé" name="refuse" domain="[('state', '=', 'refuse')]"/>
                 <separator/>
-                <filter string="Alternant" name="alternant" domain="[('is_alternant', '=', True)]"/>
+                <filter string="Stage" name="stage" domain="[('type_contrat_souhaite', '=', 'stage')]"/>
+                <filter string="Alternance" name="alternance" domain="[('type_contrat_souhaite', '=', 'alternance')]"/>
+                <separator/>
+                <filter string="Alternant" name="alternant_bool" domain="[('is_alternant', '=', True)]"/>
                 <filter string="Lié à un besoin" name="besoin" domain="[('is_besoin', '=', True)]"/>
                 <filter string="Kaïros" name="kairos" domain="[('is_kairos', '=', True)]"/>
                 <separator/>
@@ -126,8 +185,8 @@
                         domain="[('date_candidature', '&gt;=', (context_today() - relativedelta(months=12)).strftime('%Y-01-01'))]"/>
                 <group expand="0" string="Grouper par">
                     <filter string="Formation" name="group_formation" context="{'group_by': 'formation_id'}"/>
-                    <filter string="Statut Dossier" name="group_statut" context="{'group_by': 'statut_dossier'}"/>
-                    <filter string="Statut SRE" name="group_sre" context="{'group_by': 'statut_SRE'}"/>
+                    <filter string="Type de contrat" name="group_type" context="{'group_by': 'type_contrat_souhaite'}"/>
+                    <filter string="État" name="group_state" context="{'group_by': 'state'}"/>
                     <filter string="Mois" name="group_month" context="{'group_by': 'date_candidature:month'}"/>
                 </group>
             </search>
@@ -139,13 +198,17 @@
         <field name="name">Candidatures</field>
         <field name="res_model">limayrac.voeux</field>
         <field name="view_mode">tree,form</field>
-        <field name="context">{'search_default_nouveau': 1, 'search_default_en_cours': 1}</field>
+        <field name="context">{'search_default_nouveau': 1, 'search_default_cfp_validation': 1, 'search_default_rp_evaluation': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Créer une nouvelle candidature
             </p>
             <p>
-                Les candidatures représentent les vœux des personnes souhaitant intégrer une formation.
+                Les candidatures suivent un workflow depuis le portail jusqu'à la génération du contrat/convention.
+                <br/>
+                <b>Parcours Stage:</b> Portail → CFP → RP → Jury → RP Validation → Convention
+                <br/>
+                <b>Parcours Alternance:</b> Portail → CFP → RP → Jury → SRE → RP → SRE → Contrat/CERFA
             </p>
         </field>
     </record>
