@@ -5,6 +5,7 @@ from odoo import models, fields, api
 class LimayracVoeux(models.Model):
     _name = 'limayrac.voeux'
     _description = 'Candidature / Vœux'
+    _table = 'candidat'
     _rec_name = 'apprenant_id'
     _order = 'date_candidature desc'
 

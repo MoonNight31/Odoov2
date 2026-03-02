@@ -88,7 +88,7 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_res_partner_filter"/>
         <field name="arch" type="xml">
-            <xpath expr="//filter[@name='customer']" position="after">
+            <search position="inside">
                 <separator/>
                 <filter string="Candidats" name="candidats" domain="[('is_candidat', '=', True)]"/>
                 <filter string="Apprenants" name="apprenants" domain="[('is_apprenant', '=', True)]"/>
@@ -100,7 +100,7 @@
                 <filter string="Partenaires" name="partenaires" domain="[('is_partenaire', '=', True)]"/>
                 <filter string="Prospects" name="prospects" domain="[('is_prospect', '=', True)]"/>
                 <filter string="Liste noire" name="blacklist" domain="[('is_blacklist', '=', True)]"/>
-            </xpath>
+            </search>
         </field>
     </record>
 </odoo>

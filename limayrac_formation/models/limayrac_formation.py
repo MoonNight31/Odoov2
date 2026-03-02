@@ -11,11 +11,11 @@ class LimayracFormation(models.Model):
     description = fields.Text(string='Description')
     
     # Questions pour le jury
-    question_1 = fields.Text(string='Question 1')
-    question_2 = fields.Text(string='Question 2')
-    question_3 = fields.Text(string='Question 3')
-    question_4 = fields.Text(string='Question 4')
-    question_5 = fields.Text(string='Question 5')
+    question_1 = fields.Text(string='Question 1', column_name='Question1')
+    question_2 = fields.Text(string='Question 2', column_name='Question2')
+    question_3 = fields.Text(string='Question 3', column_name='Question3')
+    question_4 = fields.Text(string='Question 4', column_name='Question4')
+    question_5 = fields.Text(string='Question 5', column_name='Question5')
     
     # Relations
     titre_rncp_ids = fields.One2many('limayrac.titre.rncp', 'formation_id', string='Titres RNCP')
