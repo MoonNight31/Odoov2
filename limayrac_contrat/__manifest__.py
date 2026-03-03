@@ -13,7 +13,7 @@
         - Suivi des notations et commentaires
     """,
     'author': 'Limayrac',
-    'depends': ['base', 'mail', 'limayrac_candidature'],
+    'depends': ['base', 'mail', 'limayrac_contacts', 'limayrac_candidature'],
     'data': [
         'security/ir.model.access.csv',
         'views/limayrac_contrat_views.xml',

@@ -27,7 +27,7 @@ class LimayracContrat(models.Model):
     
     # Relations principales
     apprenant_id = fields.Many2one('res.partner', string='Apprenant', 
-                                   domain=[('is_apprenant', '=', True)],
+                                   domain="['|', '|', ('is_apprenant', '=', True), ('is_candidat', '=', True), ('is_alumni', '=', True)]",
                                    required=True)
     cursus_id = fields.Many2one('limayrac.cursus', string='Cursus')
     formation_id = fields.Many2one(related='cursus_id.formation_id', string='Formation', store=True, readonly=True)

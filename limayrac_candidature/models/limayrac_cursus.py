@@ -10,7 +10,7 @@ class LimayracCursus(models.Model):
     _order = 'date_debut desc'
 
     apprenant_id = fields.Many2one('res.partner', string='Apprenant', 
-                                   domain="['|', ('is_apprenant', '=', True), ('is_candidat', '=', True)]",
+                                   domain="['|', '|', ('is_apprenant', '=', True), ('is_candidat', '=', True), ('is_alumni', '=', True)]",
                                    required=True)
     formation_id = fields.Many2one('limayrac.formation', string='Formation', required=True)
     
