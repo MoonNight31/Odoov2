@@ -231,14 +231,6 @@ Pour restreindre les accès, modifier ces fichiers selon vos besoins.
 - Dates de début/fin cohérentes (fin > début)
 - SIREN unique dans groupe_structure
 
-## 🤝 Contribution
-
-Pour proposer des améliorations :
-
-1. Créer une branche pour votre fonctionnalité
-2. Développer et tester
-3. Soumettre une pull request
-
 ## 📄 License
 
 Développé pour l'établissement Limayrac - Tous droits réservés
