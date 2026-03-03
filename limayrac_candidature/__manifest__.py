@@ -19,9 +19,9 @@
         'views/limayrac_voeux_views.xml',
         'views/limayrac_cursus_views.xml',
         'views/menus.xml',
+        'demo/demo_data.xml',
     ],
     'demo': [
-        'demo/demo_data.xml',
     ],
     'installable': True,
     'application': False,

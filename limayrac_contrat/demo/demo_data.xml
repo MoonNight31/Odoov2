@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
+<odoo noupdate="1">
     <!-- Contrats -->
     <record id="contrat_moreau" model="limayrac.contrat">
         <field name="apprenant_id" ref="limayrac_contacts.candidat_moreau"/>

@@ -21,9 +21,9 @@
         'views/limayrac_besoin_views.xml',
         'views/limayrac_formation_views.xml',
         'views/menus.xml',
+        'demo/demo_data.xml',
     ],
     'demo': [
-        'demo/demo_data.xml',
     ],
     'installable': True,
     'application': False,

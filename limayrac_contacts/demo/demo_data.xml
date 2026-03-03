@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
+<odoo noupdate="1">
     <!-- Groupes de structures -->
     <record id="groupe_techcorp" model="limayrac.groupe.structure">
         <field name="name">Groupe TechCorp</field>
