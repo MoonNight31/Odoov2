@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo noupdate="1">
+<odoo>
     <!-- Vœux -->
     <record id="voeux_moreau" model="limayrac.voeux">
         <field name="apprenant_id" ref="limayrac_contacts.candidat_moreau"/>

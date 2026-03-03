@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo noupdate="1">
+<odoo>
     <!-- Formations -->
     <record id="formation_bts_sio" model="limayrac.formation">
         <field name="nom_commercial">BTS SIO - Services Informatiques aux Organisations</field>

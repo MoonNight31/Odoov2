@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Limayrac - Candidatures',
-    'version': '1.0',
+    'version': '1.0.1',
     'category': 'Education',
     'summary': 'Gestion des candidatures et cursus pour Limayrac',
     'description': """

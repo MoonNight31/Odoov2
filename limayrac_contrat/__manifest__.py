@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Limayrac - Contrats',
-    'version': '1.0',
+    'version': '1.0.1',
     'category': 'Education',
     'summary': 'Gestion des contrats pour Limayrac',
     'description': """
@@ -13,7 +13,7 @@
         - Suivi des notations et commentaires
     """,
     'author': 'Limayrac',
-    'depends': ['base', 'mail', 'limayrac_contacts', 'limayrac_candidature'],
+    'depends': ['base', 'mail', 'limayrac_contacts', 'limayrac_formation', 'limayrac_candidature'],
     'data': [
         'security/ir.model.access.csv',
         'views/limayrac_contrat_views.xml',
