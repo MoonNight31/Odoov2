@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Limayrac - Contacts',
-    'version': '1.0.1',
+    'version': '1.0.3',
     'category': 'CRM',
     'summary': 'Gestion des personnes et structures pour Limayrac',
     'description': """

@@ -21,16 +21,21 @@ Un nouveau module **`limayrac_demo`** a été créé pour faciliter le chargemen
    - Activez le **Mode Développeur** (icône insecte)
    - Cliquez sur **Mettre à jour la liste des applications**
 
-3. **Installer les modules dans l'ordre** :
-   ```
-   1. limayrac_contacts
-   2. limayrac_formation
-   3. limayrac_candidature
-   4. limayrac_contrat
-   5. limayrac_demo (★ IMPORTANT : en dernier !)
-   ```
+3. **Si les modules sont déjà installés** (IMPORTANT !) :
+   - Mettez à jour **UN PAR UN** les 4 modules de base :
+     ```
+     1. limayrac_contacts (mettre à jour vers 1.0.2)
+     2. limayrac_formation (mettre à jour vers 1.0.2)
+     3. limayrac_candidature (mettre à jour vers 1.0.2)
+     4. limayrac_contrat (mettre à jour vers 1.0.2)
+     ```
+   - Cela videra les anciennes données demo
+   
+4. **Installer limayrac_demo** :
+   - Recherchez "Limayrac - Données de démonstration"
+   - Cliquez sur **Installer**
 
-4. **C'est tout !** Les données de démonstration seront automatiquement chargées lors de l'installation de `limayrac_demo`
+5. **C'est tout !** Les données de démonstration seront automatiquement chargées
 
 ### Option 2 : Installation sans données de démonstration
 

@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- ============================================= -->
+    <!-- DONNÉES ENRICHIES - STRUCTURES SUPPLÉMENTAIRES -->
+    <!-- ============================================= -->
+
+    <record id="structure_datalytics" model="res.partner">
+        <field name="name">Datalytics France</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">55566677700014</field>
+        <field name="raison_sociale">Datalytics France SAS</field>
+        <field name="code_naf">6202A</field>
+        <field name="site_web">https://datalytics.fr</field>
+        <field name="street">78 Chemin de la Recherche</field>
+        <field name="city">Ramonville</field>
+        <field name="zip">31520</field>
+        <field name="phone">0567890123</field>
+        <field name="email">rh@datalytics.fr</field>
+        <field name="is_partenaire" eval="True"/>
+        <field name="is_taxe_apprentissage" eval="True"/>
+    </record>
+
+    <record id="structure_mediaco" model="res.partner">
+        <field name="name">MediaCo Communication</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">66677788800011</field>
+        <field name="raison_sociale">MediaCo Communication SARL</field>
+        <field name="code_naf">7311Z</field>
+        <field name="site_web">https://mediaco.com</field>
+        <field name="street">92 Rue de la Communication</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31300</field>
+        <field name="phone">0568901234</field>
+        <field name="email">contact@mediaco.com</field>
+        <field name="is_partenaire" eval="True"/>
+    </record>
+
+    <record id="structure_retailmax" model="res.partner">
+        <field name="name">RetailMax Distribution</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">77788899900012</field>
+        <field name="raison_sociale">RetailMax Distribution SA</field>
+        <field name="code_naf">4719B</field>
+        <field name="site_web">https://retailmax.fr</field>
+        <field name="street">156 Avenue du Commerce</field>
+        <field name="city">Portet-sur-Garonne</field>
+        <field name="zip">31120</field>
+        <field name="phone">0569012345</field>
+        <field name="email">recrutement@retailmax.fr</field>
+        <field name="is_partenaire" eval="True"/>
+        <field name="is_prospect" eval="False"/>
+    </record>
+
+    <record id="structure_cybersec" model="res.partner">
+        <field name="name">CyberSec Solutions</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">88899900011013</field>
+        <field name="raison_sociale">CyberSec Solutions EURL</field>
+        <field name="code_naf">6202A</field>
+        <field name="site_web">https://cybersec-solutions.fr</field>
+        <field name="street">34 Rue de la Sécurité</field>
+        <field name="city">Labège</field>
+        <field name="zip">31670</field>
+        <field name="phone">0570123456</field>
+        <field name="email">jobs@cybersec-solutions.fr</field>
+        <field name="is_partenaire" eval="True"/>
+        <field name="is_taxe_apprentissage" eval="True"/>
+    </record>
+
+    <record id="structure_greentech" model="res.partner">
+        <field name="name">GreenTech Innovations</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">99900011122014</field>
+        <field name="raison_sociale">GreenTech Innovations SAS</field>
+        <field name="code_naf">7112B</field>
+        <field name="street">120 Allée de l'Écologie</field>
+        <field name="city">Balma</field>
+        <field name="zip">31130</field>
+        <field name="phone">0571234567</field>
+        <field name="email">contact@greentech-innovations.fr</field>
+        <field name="is_prospect" eval="True"/>
+    </record>
+
+    <record id="structure_smartfinance" model="res.partner">
+        <field name="name">SmartFinance Conseil</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">11223344556015</field>
+        <field name="raison_sociale">SmartFinance Conseil SARL</field>
+        <field name="code_naf">6619B</field>
+        <field name="site_web">https://smartfinance.fr</field>
+        <field name="street">45 Boulevard des Finances</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31000</field>
+        <field name="phone">0572345678</field>
+        <field name="email">rh@smartfinance.fr</field>
+        <field name="is_partenaire" eval="True"/>
+    </record>
+
+    <record id="structure_fooddelivery" model="res.partner">
+        <field name="name">FoodDelivery Express</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">22334455667016</field>
+        <field name="raison_sociale">FoodDelivery Express SAS</field>
+        <field name="code_naf">5621Z</field>
+        <field name="site_web">https://fooddelivery-express.fr</field>
+        <field name="street">67 Rue de la Livraison</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31200</field>
+        <field name="phone">0573456789</field>
+        <field name="email">jobs@fooddelivery-express.fr</field>
+        <field name="is_partenaire" eval="True"/>
+    </record>
+
+    <record id="structure_healthapp" model="res.partner">
+        <field name="name">HealthApp Systems</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">33445566778017</field>
+        <field name="raison_sociale">HealthApp Systems SAS</field>
+        <field name="code_naf">6201Z</field>
+        <field name="site_web">https://healthapp-systems.com</field>
+        <field name="street">89 Avenue de la Santé</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31400</field>
+        <field name="phone">0574567890</field>
+        <field name="email">recruitment@healthapp-systems.com</field>
+        <field name="is_partenaire" eval="True"/>
+        <field name="is_taxe_apprentissage" eval="True"/>
+    </record>
+
+    <!-- Services supplémentaires -->
+    <record id="service_data_analytics" model="limayrac.service">
+        <field name="type_service">Data &amp; Analytics</field>
+        <field name="structure_id" ref="structure_datalytics"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="service_communication" model="limayrac.service">
+        <field name="type_service">Communication digitale</field>
+        <field name="structure_id" ref="structure_mediaco"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="service_retail_digital" model="limayrac.service">
+        <field name="type_service">E-commerce &amp; Digital Retail</field>
+        <field name="structure_id" ref="structure_retailmax"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="service_cybersecurity" model="limayrac.service">
+        <field name="type_service">Cybersécurité</field>
+        <field name="structure_id" ref="structure_cybersec"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="service_development_health" model="limayrac.service">
+        <field name="type_service">Développement logiciels santé</field>
+        <field name="structure_id" ref="structure_healthapp"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="service_finance_digital" model="limayrac.service">
+        <field name="type_service">Finance &amp; Digital</field>
+        <field name="structure_id" ref="structure_smartfinance"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <!-- ============================================= -->
+    <!-- CANDIDATS SUPPLÉMENTAIRES -->
+    <!-- ============================================= -->
+
+    <record id="candidat_dubois" model="res.partner">
+        <field name="name">Dubois Marie</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">marie.dubois@gmail.com</field>
+        <field name="phone">0612223344</field>
+        <field name="street">22 Rue Anatole France</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31000</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_martinez" model="res.partner">
+        <field name="name">Martinez Lucas</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">lucas.martinez@yahoo.fr</field>
+        <field name="phone">0623334455</field>
+        <field name="street">58 Avenue Jean Jaurès</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31300</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_bernard" model="res.partner">
+        <field name="name">Bernard Sophie</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">sophie.bernard@outlook.fr</field>
+        <field name="phone">0634445566</field>
+        <field name="street">12 Place Wilson</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31000</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_petit" model="res.partner">
+        <field name="name">Petit Alexandre</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">alexandre.petit@gmail.com</field>
+        <field name="phone">0645556677</field>
+        <field name="street">34 Boulevard Lazare Carnot</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31000</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_roux" model="res.partner">
+        <field name="name">Roux Camille</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">camille.roux@gmail.com</field>
+        <field name="phone">0656667788</field>
+        <field name="street">89 Rue de Metz</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31000</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_fournier" model="res.partner">
+        <field name="name">Fournier Thomas</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">thomas.fournier@outlook.fr</field>
+        <field name="phone">0667778899</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_giraud" model="res.partner">
+        <field name="name">Giraud Julie</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">julie.giraud@gmail.com</field>
+        <field name="phone">0678889900</field>
+        <field name="street">76 Allée Charles de Fitte</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31300</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_moreau" model="res.partner">
+        <field name="name">Moreau Nathan</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">nathan.moreau@yahoo.fr</field>
+        <field name="phone">0689990011</field>
+        <field name="street">45 Chemin des Fontaines</field>
+        <field name="city">Blagnac</field>
+        <field name="zip">31700</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_laurent" model="res.partner">
+        <field name="name">Laurent Anaïs</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">anais.laurent@gmail.com</field>
+        <field name="phone">0690001122</field>
+        <field name="street">91 Avenue de Castres</field>
+        <field name="city">Ramonville</field>
+        <field name="zip">31520</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_bonnet" model="res.partner">
+        <field name="name">Bonnet Maxime</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">maxime.bonnet@outlook.fr</field>
+        <field name="phone">0601112233</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <!-- ============================================= -->
+    <!-- APPRENANTS ACTUELS SUPPLÉMENTAIRES -->
+    <!-- ============================================= -->
+
+    <record id="apprenant_durand" model="res.partner">
+        <field name="name">Durand Élise</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">elise.durand@limayrac.fr</field>
+        <field name="phone">0612223344</field>
+        <field name="is_apprenant" eval="True"/>
+    </record>
+
+    <record id="apprenant_lefevre" model="res.partner">
+        <field name="name">Lefèvre Nicolas</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">nicolas.lefevre@limayrac.fr</field>
+        <field name="phone">0613334455</field>
+        <field name="is_apprenant" eval="True"/>
+    </record>
+
+    <record id="apprenant_simon" model="res.partner">
+        <field name="name">Simon Clara</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">clara.simon@limayrac.fr</field>
+        <field name="phone">0614445566</field>
+        <field name="is_apprenant" eval="True"/>
+    </record>
+
+    <record id="apprenant_michel" model="res.partner">
+        <field name="name">Michel Hugo</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">hugo.michel@limayrac.fr</field>
+        <field name="phone">0615556677</field>
+        <field name="is_apprenant" eval="True"/>
+    </record>
+
+    <record id="apprenant_garcia" model="res.partner">
+        <field name="name">Garcia Manon</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">manon.garcia@limayrac.fr</field>
+        <field name="phone">0616667788</field>
+        <field name="is_apprenant" eval="True"/>
+    </record>
+
+    <record id="apprenant_martin" model="res.partner">
+        <field name="name">Martin Théo</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">theo.martin@limayrac.fr</field>
+        <field name="phone">0617778899</field>
+        <field name="is_apprenant" eval="True"/>
+    </record>
+
+    <record id="apprenant_lopez" model="res.partner">
+        <field name="name">Lopez Sarah</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">sarah.lopez@limayrac.fr</field>
+        <field name="phone">0618889900</field>
+        <field name="is_apprenant" eval="True"/>
+    </record>
+
+    <record id="apprenant_andre" model="res.partner">
+        <field name="name">André Dylan</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">dylan.andre@limayrac.fr</field>
+        <field name="phone">0619990011</field>
+        <field name="is_apprenant" eval="True"/>
+    </record>
+
+    <!-- ============================================= -->
+    <!-- ALUMNI SUPPLÉMENTAIRES -->
+    <!-- ============================================= -->
+
+    <record id="alumni_richard" model="res.partner">
+        <field name="name">Richard Pauline</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">pauline.richard@gmail.com</field>
+        <field name="phone">0620001122</field>
+        <field name="is_alumni" eval="True"/>
+        <field name="function">Data Analyst</field>
+    </record>
+
+    <record id="alumni_blanc" model="res.partner">
+        <field name="name">Blanc Julien</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">julien.blanc@outlook.fr</field>
+        <field name="phone">0621112233</field>
+        <field name="is_alumni" eval="True"/>
+        <field name="function">Responsable Marketing Digital</field>
+    </record>
+
+    <record id="alumni_henry" model="res.partner">
+        <field name="name">Henry Lisa</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">lisa.henry@gmail.com</field>
+        <field name="phone">0622223344</field>
+        <field name="is_alumni" eval="True"/>
+        <field name="function">DevOps Engineer</field>
+    </record>
+
+    <record id="alumni_rousseau" model="res.partner">
+        <field name="name">Rousseau Kevin</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">kevin.rousseau@yahoo.fr</field>
+        <field name="phone">0623334455</field>
+        <field name="is_alumni" eval="True"/>
+        <field name="function">Commercial BtoB</field>
+    </record>
+
+    <!-- ============================================= -->
+    <!-- INTERVENANTS SUPPLÉMENTAIRES -->
+    <!-- ============================================= -->
+
+    <record id="intervenant_dupont" model="res.partner">
+        <field name="name">Dupont Vincent</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">vincent.dupont@limayrac.fr</field>
+        <field name="phone">0561776655</field>
+        <field name="function">Formateur Base de Données</field>
+        <field name="is_intervenant" eval="True"/>
+    </record>
+
+    <record id="intervenant_faure" model="res.partner">
+        <field name="name">Faure Catherine</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">catherine.faure@limayrac.fr</field>
+        <field name="phone">0561665544</field>
+        <field name="function">Formatrice E-commerce</field>
+        <field name="is_intervenant" eval="True"/>
+    </record>
+
+    <record id="intervenant_garnier" model="res.partner">
+        <field name="name">Garnier Marc</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">marc.garnier@limayrac.fr</field>
+        <field name="phone">0561554433</field>
+        <field name="function">Formateur Cybersécurité</field>
+        <field name="is_intervenant" eval="True"/>
+    </record>
+
+    <record id="intervenant_fabre" model="res.partner">
+        <field name="name">Fabre Isabelle</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">isabelle.fabre@limayrac.fr</field>
+        <field name="phone">0561443322</field>
+        <field name="function">Formatrice Communication</field>
+        <field name="is_intervenant" eval="True"/>
+    </record>
+
+    <record id="intervenant_mercier" model="res.partner">
+        <field name="name">Mercier Alain</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">alain.mercier@limayrac.fr</field>
+        <field name="phone">0561332211</field>
+        <field name="function">Formateur Systèmes et Virtualisation</field>
+        <field name="is_intervenant" eval="True"/>
+    </record>
+
+    <record id="intervenant_chevalier" model="res.partner">
+        <field name="name">Chevalier Nathalie</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">nathalie.chevalier@limayrac.fr</field>
+        <field name="phone">0561221100</field>
+        <field name="function">Formatrice Droit et Entreprise</field>
+        <field name="is_intervenant" eval="True"/>
+    </record>
+
+    <!-- ============================================= -->
+    <!-- TUTEURS ENTREPRISE SUPPLÉMENTAIRES -->
+    <!-- ============================================= -->
+
+    <record id="tuteur_renard" model="res.partner">
+        <field name="name">Renard François</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">francois.renard@datalytics.fr</field>
+        <field name="phone">0567890111</field>
+        <field name="function">Chef de projet Data</field>
+        <field name="service_id" ref="service_data_analytics"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <record id="tuteur_leclerc" model="res.partner">
+        <field name="name">Leclerc Sandrine</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">sandrine.leclerc@mediaco.com</field>
+        <field name="phone">0568901222</field>
+        <field name="function">Directrice Communication</field>
+        <field name="service_id" ref="service_communication"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <record id="tuteur_rey" model="res.partner">
+        <field name="name">Rey Olivier</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">olivier.rey@retailmax.fr</field>
+        <field name="phone">0569012333</field>
+        <field name="function">Responsable E-commerce</field>
+        <field name="service_id" ref="service_retail_digital"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <record id="tuteur_gerard" model="res.partner">
+        <field name="name">Gérard Stéphane</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">stephane.gerard@cybersec-solutions.fr</field>
+        <field name="phone">0570123444</field>
+        <field name="function">Expert Cybersécurité</field>
+        <field name="service_id" ref="service_cybersecurity"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <record id="tuteur_lemoine" model="res.partner">
+        <field name="name">Lemoine Caroline</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">caroline.lemoine@healthapp-systems.com</field>
+        <field name="phone">0574567555</field>
+        <field name="function">Tech Lead</field>
+        <field name="service_id" ref="service_development_health"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <record id="tuteur_barbier" model="res.partner">
+        <field name="name">Barbier Mathieu</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">mathieu.barbier@smartfinance.fr</field>
+        <field name="phone">0572345666</field>
+        <field name="function">Consultant FinTech</field>
+        <field name="service_id" ref="service_finance_digital"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <record id="tuteur_colin" model="res.partner">
+        <field name="name">Colin Valérie</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">valerie.colin@fooddelivery-express.fr</field>
+        <field name="phone">0573456777</field>
+        <field name="function">Responsable Tech</field>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <!-- ============================================= -->
+    <!-- FORMATIONS SUPPLÉMENTAIRES -->
+    <!-- ============================================= -->
+
+    <record id="formation_commerce_bts" model="limayrac.formation">
+        <field name="name">BTS NDRC - Négociation et Digitalisation de la Relation Client</field>
+        <field name="niveau_formation">niveau3_bts</field>
+        <field name="duree_formation">2</field>
+        <field name="type_formation">initiale</field>
+        <field name="date_debut_formation">2024-09-01</field>
+        <field name="date_fin_formation">2026-06-30</field>
+        <field name="cout_formation">8000.00</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="formation_cybersec_licence" model="limayrac.formation">
+        <field name="name">Licence Pro Cybersécurité</field>
+        <field name="niveau_formation">niveau6_licence</field>
+        <field name="duree_formation">1</field>
+        <field name="type_formation">alternance</field>
+        <field name="date_debut_formation">2024-09-01</field>
+        <field name="date_fin_formation">2025-08-31</field>
+        <field name="cout_formation">7500.00</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="formation_data_master" model="limayrac.formation">
+        <field name="name">Master Data Science et IA</field>
+        <field name="niveau_formation">niveau7_master</field>
+        <field name="duree_formation">2</field>
+        <field name="type_formation">alternance</field>
+        <field name="date_debut_formation">2024-09-01</field>
+        <field name="date_fin_formation">2026-08-31</field>
+        <field name="cout_formation">16000.00</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="formation_webdesign_bachelor" model="limayrac.formation">
+        <field name="name">Bachelor Webdesign et Développement</field>
+        <field name="niveau_formation">niveau6_licence</field>
+        <field name="duree_formation">1</field>
+        <field name="type_formation">alternance</field>
+        <field name="date_debut_formation">2024-09-01</field>
+        <field name="date_fin_formation">2025-08-31</field>
+        <field name="cout_formation">7800.00</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <!-- ============================================= -->
+    <!-- CURSUS SUPPLÉMENTAIRES -->
+    <!-- ============================================= -->
+
+    <record id="cursus_dubois" model="limayrac.cursus">
+        <field name="formation_id" ref="formation_commerce_bts"/>
+        <field name="candidat_id" ref="candidat_dubois"/>
+        <field name="statut_candidature">admis</field>
+        <field name="date_candidature">2024-02-15</field>
+        <field name="date_reponse">2024-03-20</field>
+        <field name="resultat_tests">85</field>
+        <field name="commentaire">Excellent parcours commercial, très motivée</field>
+    </record>
+
+    <record id="cursus_martinez" model="limayrac.cursus">
+        <field name="formation_id" ref="formation_cybersec_licence"/>
+        <field name="candidat_id" ref="candidat_martinez"/>
+        <field name="statut_candidature">admis</field>
+        <field name="date_candidature">2024-03-01</field>
+        <field name="date_reponse">2024-04-10</field>
+        <field name="resultat_tests">92</field>
+        <field name="commentaire">Profil technique très solide en sécurité informatique</field>
+    </record>
+
+    <record id="cursus_bernard" model="limayrac.cursus">
+        <field name="formation_id" ref="formation_data_master"/>
+        <field name="candidat_id" ref="candidat_bernard"/>
+        <field name="statut_candidature">en_cours</field>
+        <field name="date_candidature">2024-04-12</field>
+        <field name="resultat_tests">88</field>
+        <field name="commentaire">Très bon niveau en mathématiques et statistiques</field>
+    </record>
+
+    <record id="cursus_petit" model="limayrac.cursus">
+        <field name="formation_id" ref="formation_webdesign_bachelor"/>
+        <field name="candidat_id" ref="candidat_petit"/>
+        <field name="statut_candidature">admis</field>
+        <field name="date_candidature">2024-02-28</field>
+        <field name="date_reponse">2024-04-05</field>
+        <field name="resultat_tests">79</field>
+        <field name="commentaire">Portfolio créatif impressionnant</field>
+    </record>
+
+    <record id="cursus_roux" model="limayrac.cursus">
+        <field name="formation_id" ref="formation_commerce_bts"/>
+        <field name="candidat_id" ref="candidat_roux"/>
+        <field name="statut_candidature">refuse</field>
+        <field name="date_candidature">2024-03-15</field>
+        <field name="date_reponse">2024-04-20</field>
+        <field name="resultat_tests">62</field>
+        <field name="commentaire">Niveau insuffisant pour intégrer la formation</field>
+    </record>
+
+    <record id="cursus_fournier" model="limayrac.cursus">
+        <field name="formation_id" ref="formation_cybersec_licence"/>
+        <field name="candidat_id" ref="candidat_fournier"/>
+        <field name="statut_candidature">en_attente</field>
+        <field name="date_candidature">2024-04-18</field>
+        <field name="resultat_tests">75</field>
+        <field name="commentaire">Profil intéressant, en attente de places disponibles</field>
+    </record>
+
+    <record id="cursus_giraud" model="limayrac.cursus">
+        <field name="formation_id" ref="formation_webdesign_bachelor"/>
+        <field name="candidat_id" ref="candidat_giraud"/>
+        <field name="statut_candidature">admis</field>
+        <field name="date_candidature">2024-02-10</field>
+        <field name="date_reponse">2024-03-18</field>
+        <field name="resultat_tests">90</field>
+        <field name="commentaire">Excellentes compétences en design et UX</field>
+    </record>
+
+    <record id="cursus_moreau" model="limayrac.cursus">
+        <field name="formation_id" ref="formation_data_master"/>
+        <field name="candidat_id" ref="candidat_moreau"/>
+        <field name="statut_candidature">en_cours</field>
+        <field name="date_candidature">2024-04-22</field>
+        <field name="resultat_tests">83</field>
+        <field name="commentaire">Bonne maîtrise de Python et SQL</field>
+    </record>
+
+    <record id="cursus_laurent" model="limayrac.cursus">
+        <field name="formation_id" ref="formation_commerce_bts"/>
+        <field name="candidat_id" ref="candidat_laurent"/>
+        <field name="statut_candidature">en_attente</field>
+        <field name="date_candidature">2024-04-05</field>
+        <field name="resultat_tests">70</field>
+        <field name="commentaire">Liste d'attente, bon potentiel</field>
+    </record>
+
+    <record id="cursus_bonnet" model="limayrac.cursus">
+        <field name="formation_id" ref="formation_cybersec_licence"/>
+        <field name="candidat_id" ref="candidat_bonnet"/>
+        <field name="statut_candidature">admis</field>
+        <field name="date_candidature">2024-03-20</field>
+        <field name="date_reponse">2024-04-25</field>
+        <field name="resultat_tests">87</field>
+        <field name="commentaire">Certifications Cisco et CompTIA obtenues</field>
+    </record>
+
+    <!-- ============================================= -->
+    <!-- OPPORTUNITÉS SUPPLÉMENTAIRES -->
+    <!-- ============================================= -->
+
+    <record id="opportunite_datalytics" model="limayrac.opportunite">
+        <field name="structure_id" ref="structure_datalytics"/>
+        <field name="formation_id" ref="formation_data_master"/>
+        <field name="intitule_poste">Alternant Data Analyst</field>
+        <field name="description">Rejoignez notre équipe Data pour travailler sur des projets d'analyse et de visualisation de données</field>
+        <field name="nombre_postes">2</field>
+        <field name="remuneration">1400.00</field>
+        <field name="date_debut_opportunite">2024-09-01</field>
+        <field name="date_limite_candidature">2024-06-30</field>
+        <field name="statut_opportunite">ouverte</field>
+        <field name="date_publication">2024-03-15</field>
+    </record>
+
+    <record id="opportunite_mediaco" model="limayrac.opportunite">
+        <field name="structure_id" ref="structure_mediaco"/>
+        <field name="formation_id" ref="formation_commerce_bts"/>
+        <field name="intitule_poste">Assistant Communication Digitale</field>
+        <field name="description">Participez à la gestion de campagnes digitales pour nos clients</field>
+        <field name="nombre_postes">1</field>
+        <field name="remuneration">900.00</field>
+        <field name="date_debut_opportunite">2024-09-01</field>
+        <field name="date_limite_candidature">2024-07-15</field>
+        <field name="statut_opportunite">ouverte</field>
+        <field name="date_publication">2024-04-01</field>
+    </record>
+
+    <record id="opportunite_retailmax" model="limayrac.opportunite">
+        <field name="structure_id" ref="structure_retailmax"/>
+        <field name="formation_id" ref="formation_webdesign_bachelor"/>
+        <field name="intitule_poste">Développeur Web E-commerce</field>
+        <field name="description">Développement et maintenance de notre plateforme e-commerce</field>
+        <field name="nombre_postes">1</field>
+        <field name="remuneration">1200.00</field>
+        <field name="date_debut_opportunite">2024-09-01</field>
+        <field name="date_limite_candidature">2024-06-15</field>
+        <field name="statut_opportunite">pourvue</field>
+        <field name="date_publication">2024-02-20</field>
+    </record>
+
+    <record id="opportunite_cybersec" model="limayrac.opportunite">
+        <field name="structure_id" ref="structure_cybersec"/>
+        <field name="formation_id" ref="formation_cybersec_licence"/>
+        <field name="intitule_poste">Analyste SOC Junior</field>
+        <field name="description">Participation à la surveillance et à l'analyse des incidents de sécurité</field>
+        <field name="nombre_postes">2</field>
+        <field name="remuneration">1300.00</field>
+        <field name="date_debut_opportunite">2024-09-01</field>
+        <field name="date_limite_candidature">2024-07-31</field>
+        <field name="statut_opportunite">ouverte</field>
+        <field name="date_publication">2024-04-10</field>
+    </record>
+
+    <record id="opportunite_healthapp" model="limayrac.opportunite">
+        <field name="structure_id" ref="structure_healthapp"/>
+        <field name="formation_id" ref="formation_webdesign_bachelor"/>
+        <field name="intitule_poste">Développeur Full Stack</field>
+        <field name="description">Développement d'applications web pour le secteur de la santé</field>
+        <field name="nombre_postes">1</field>
+        <field name="remuneration">1250.00</field>
+        <field name="date_debut_opportunite">2024-09-01</field>
+        <field name="date_limite_candidature">2024-06-20</field>
+        <field name="statut_opportunite">suspendue</field>
+        <field name="date_publication">2024-03-01</field>
+    </record>
+
+    <record id="opportunite_smartfinance" model="limayrac.opportunite">
+        <field name="structure_id" ref="structure_smartfinance"/>
+        <field name="formation_id" ref="formation_commerce_bts"/>
+        <field name="intitule_poste">Chargé de clientèle junior</field>
+        <field name="description">Accompagnement des clients dans leurs projets financiers et digitaux</field>
+        <field name="nombre_postes">1</field>
+        <field name="remuneration">1000.00</field>
+        <field name="date_debut_opportunite">2024-09-01</field>
+        <field name="date_limite_candidature">2024-07-10</field>
+        <field name="statut_opportunite">ouverte</field>
+        <field name="date_publication">2024-04-05</field>
+    </record>
+
+    <!-- ============================================= -->
+    <!-- CONTRATS SUPPLÉMENTAIRES -->
+    <!-- ============================================= -->
+
+    <record id="contrat_durand_datalytics" model="limayrac.contrat">
+        <field name="apprenant_id" ref="apprenant_durand"/>
+        <field name="structure_id" ref="structure_datalytics"/>
+        <field name="cursus_id" ref="limayrac_demo.cursus_bernard"/>
+        <field name="tuteur_id" ref="tuteur_renard"/>
+        <field name="type_contrat">apprentissage</field>
+        <field name="date_debut_contrat">2024-09-01</field>
+        <field name="date_fin_contrat">2026-08-31</field>
+        <field name="duree_contrat">24</field>
+        <field name="remuneration">1400.00</field>
+        <field name="statut_contrat">en_cours</field>
+        <field name="date_signature">2024-06-15</field>
+    </record>
+
+    <record id="contrat_lefevre_cybersec" model="limayrac.contrat">
+        <field name="apprenant_id" ref="apprenant_lefevre"/>
+        <field name="structure_id" ref="structure_cybersec"/>
+        <field name="cursus_id" ref="cursus_martinez"/>
+        <field name="tuteur_id" ref="tuteur_gerard"/>
+        <field name="type_contrat">apprentissage</field>
+        <field name="date_debut_contrat">2024-09-01</field>
+        <field name="date_fin_contrat">2025-08-31</field>
+        <field name="duree_contrat">12</field>
+        <field name="remuneration">1300.00</field>
+        <field name="statut_contrat">en_cours</field>
+        <field name="date_signature">2024-06-20</field>
+    </record>
+
+    <record id="contrat_simon_mediaco" model="limayrac.contrat">
+        <field name="apprenant_id" ref="apprenant_simon"/>
+        <field name="structure_id" ref="structure_mediaco"/>
+        <field name="cursus_id" ref="cursus_dubois"/>
+        <field name="tuteur_id" ref="tuteur_leclerc"/>
+        <field name="type_contrat">professionnalisation</field>
+        <field name="date_debut_contrat">2024-09-01</field>
+        <field name="date_fin_contrat">2026-06-30</field>
+        <field name="duree_contrat">22</field>
+        <field name="remuneration">950.00</field>
+        <field name="statut_contrat">en_cours</field>
+        <field name="date_signature">2024-07-01</field>
+    </record>
+
+    <record id="contrat_michel_retailmax" model="limayrac.contrat">
+        <field name="apprenant_id" ref="apprenant_michel"/>
+        <field name="structure_id" ref="structure_retailmax"/>
+        <field name="cursus_id" ref="cursus_petit"/>
+        <field name="tuteur_id" ref="tuteur_rey"/>
+        <field name="type_contrat">apprentissage</field>
+        <field name="date_debut_contrat">2024-09-01</field>
+        <field name="date_fin_contrat">2025-08-31</field>
+        <field name="duree_contrat">12</field>
+        <field name="remuneration">1200.00</field>
+        <field name="statut_contrat">signe</field>
+        <field name="date_signature">2024-06-10</field>
+    </record>
+
+    <record id="contrat_garcia_smartfinance" model="limayrac.contrat">
+        <field name="apprenant_id" ref="apprenant_garcia"/>
+        <field name="structure_id" ref="structure_smartfinance"/>
+        <field name="cursus_id" ref="cursus_dubois"/>
+        <field name="tuteur_id" ref="tuteur_barbier"/>
+        <field name="type_contrat">professionnalisation</field>
+        <field name="date_debut_contrat">2024-09-01</field>
+        <field name="date_fin_contrat">2026-06-30</field>
+        <field name="duree_contrat">22</field>
+        <field name="remuneration">1050.00</field>
+        <field name="statut_contrat">en_cours</field>
+        <field name="date_signature">2024-07-05</field>
+    </record>
+
+    <record id="contrat_martin_healthapp" model="limayrac.contrat">
+        <field name="apprenant_id" ref="apprenant_martin"/>
+        <field name="structure_id" ref="structure_healthapp"/>
+        <field name="cursus_id" ref="cursus_giraud"/>
+        <field name="tuteur_id" ref="tuteur_lemoine"/>
+        <field name="type_contrat">apprentissage</field>
+        <field name="date_debut_contrat">2024-09-01</field>
+        <field name="date_fin_contrat">2025-08-31</field>
+        <field name="duree_contrat">12</field>
+        <field name="remuneration">1250.00</field>
+        <field name="statut_contrat">en_cours</field>
+        <field name="date_signature">2024-06-25</field>
+    </record>
+
+    <record id="contrat_lopez_cybersec" model="limayrac.contrat">
+        <field name="apprenant_id" ref="apprenant_lopez"/>
+        <field name="structure_id" ref="structure_cybersec"/>
+        <field name="cursus_id" ref="cursus_bonnet"/>
+        <field name="tuteur_id" ref="tuteur_gerard"/>
+        <field name="type_contrat">apprentissage</field>
+        <field name="date_debut_contrat">2024-09-01</field>
+        <field name="date_fin_contrat">2025-08-31</field>
+        <field name="duree_contrat">12</field>
+        <field name="remuneration">1300.00</field>
+        <field name="statut_contrat">projet</field>
+        <field name="date_signature" eval="False"/>
+    </record>
+
+    <record id="contrat_andre_datalytics" model="limayrac.contrat">
+        <field name="apprenant_id" ref="apprenant_andre"/>
+        <field name="structure_id" ref="structure_datalytics"/>
+        <field name="cursus_id" ref="cursus_moreau"/>
+        <field name="tuteur_id" ref="tuteur_renard"/>
+        <field name="type_contrat">apprentissage</field>
+        <field name="date_debut_contrat">2024-09-01</field>
+        <field name="date_fin_contrat">2026-08-31</field>
+        <field name="duree_contrat">24</field>
+        <field name="remuneration">1400.00</field>
+        <field name="statut_contrat">projet</field>
+        <field name="date_signature" eval="False"/>
+    </record>
+
+    <!-- ============================================= -->
+    <!-- BESOINS EN FORMATION SUPPLÉMENTAIRES -->
+    <!-- ============================================= -->
+
+    <record id="besoin_datalytics_1" model="limayrac.besoin">
+        <field name="structure_id" ref="structure_datalytics"/>
+        <field name="titre_besoin">Formation Python avancé pour équipe Data</field>
+        <field name="description_besoin">Formation de 3 jours sur Python avancé, pandas, numpy et matplotlib pour 5 collaborateurs</field>
+        <field name="type_besoin">formation_continue</field>
+        <field name="statut_besoin">identifie</field>
+        <field name="date_identification">2024-04-10</field>
+        <field name="nombre_personnes">5</field>
+        <field name="budget_estime">7500.00</field>
+    </record>
+
+    <record id="besoin_mediaco_1" model="limayrac.besoin">
+        <field name="structure_id" ref="structure_mediaco"/>
+        <field name="titre_besoin">Alternant en communication digitale</field>
+        <field name="description_besoin">Recherche d'un alternant BTS communication pour renforcer l'équipe</field>
+        <field name="type_besoin">recrutement_alternant</field>
+        <field name="statut_besoin">en_cours</field>
+        <field name="date_identification">2024-03-15</field>
+        <field name="nombre_personnes">1</field>
+    </record>
+
+    <record id="besoin_retailmax_1" model="limayrac.besoin">
+        <field name="structure_id" ref="structure_retailmax"/>
+        <field name="titre_besoin">Formation E-commerce et marketplace</field>
+        <field name="description_besoin">Module de formation sur la gestion des marketplaces (Amazon, Cdiscount) pour 3 personnes</field>
+        <field name="type_besoin">formation_continue</field>
+        <field name="statut_besoin">resolu</field>
+        <field name="date_identification">2024-02-01</field>
+        <field name="date_resolution">2024-03-25</field>
+        <field name="nombre_personnes">3</field>
+        <field name="budget_estime">4000.00</field>
+    </record>
+
+    <record id="besoin_cybersec_1" model="limayrac.besoin">
+        <field name="structure_id" ref="structure_cybersec"/>
+        <field name="titre_besoin">Alternants analystes SOC</field>
+        <field name="description_besoin">Besoin de 2 alternants pour renforcer notre équipe SOC</field>
+        <field name="type_besoin">recrutement_alternant</field>
+        <field name="statut_besoin">en_cours</field>
+        <field name="date_identification">2024-03-20</field>
+        <field name="nombre_personnes">2</field>
+    </record>
+
+    <record id="besoin_healthapp_1" model="limayrac.besoin">
+        <field name="structure_id" ref="structure_healthapp"/>
+        <field name="titre_besoin">Formation RGPD et données de santé</field>
+        <field name="description_besoin">Formation spécialisée RGPD pour le secteur de la santé, 2 jours pour 8 personnes</field>
+        <field name="type_besoin">formation_continue</field>
+        <field name="statut_besoin">identifie</field>
+        <field name="date_identification">2024-04-15</field>
+        <field name="nombre_personnes">8</field>
+        <field name="budget_estime">5000.00</field>
+    </record>
+
+    <record id="besoin_smartfinance_1" model="limayrac.besoin">
+        <field name="structure_id" ref="structure_smartfinance"/>
+        <field name="titre_besoin">Alternant Conseiller Clientèle</field>
+        <field name="description_besoin">Recherche alternant BTS NDRC pour accompagner le développement commercial</field>
+        <field name="type_besoin">recrutement_alternant</field>
+        <field name="statut_besoin">resolu</field>
+        <field name="date_identification">2024-02-15</field>
+        <field name="date_resolution">2024-04-05</field>
+        <field name="nombre_personnes">1</field>
+    </record>
+
+    <record id="besoin_greentech_1" model="limayrac.besoin">
+        <field name="structure_id" ref="structure_greentech"/>
+        <field name="titre_besoin">Formation développement durable et RSE</field>
+        <field name="description_besoin">Programme de formation RSE pour l'ensemble des cadres (15 personnes)</field>
+        <field name="type_besoin">formation_continue</field>
+        <field name="statut_besoin">identifie</field>
+        <field name="date_identification">2024-04-20</field>
+        <field name="nombre_personnes">15</field>
+        <field name="budget_estime">12000.00</field>
+    </record>
+</odoo>
