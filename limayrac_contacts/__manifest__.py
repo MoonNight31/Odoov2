@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Limayrac - Contacts',
-    'version': '1.0.3',
+    'version': '1.0.4',
     'category': 'CRM',
-    'summary': 'Gestion des personnes et structures pour Limayrac',
+    'summary': 'Gestion des personnes et structures pour Limayrac avec vues par rôle',
     'description': """
         Module de gestion des contacts pour l'établissement Limayrac.
         
         Fonctionnalités:
-        - Gestion des personnes (candidats, apprenants, intervenants, tuteurs, alumni)
+        - Gestion des personnes avec vues séparées par rôle:
+          * Candidats
+          * Apprenants (en cursus)
+          * Alumni
+          * Tuteurs Entreprise
+          * Intervenants / Formateurs
         - Gestion des structures (entreprises, organisations)
         - Gestion des groupes de structures
         - Gestion des services

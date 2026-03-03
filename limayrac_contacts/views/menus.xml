@@ -2,17 +2,122 @@
 <odoo>
     <!-- Actions pour séparer personnes et structures -->
     <record id="action_limayrac_person" model="ir.actions.act_window">
-        <field name="name">Personnes</field>
+        <field name="name">Toutes les Personnes</field>
         <field name="res_model">res.partner</field>
-        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_mode">tree,kanban,form</field>
         <field name="domain">[('is_company', '=', False)]</field>
-        <field name="context">{'default_is_company': False}</field>
+        <field name="context">{
+            'default_is_company': False,
+            'search_default_is_company': False
+        }</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Créer une nouvelle personne
             </p>
             <p>
-                Gérez ici les candidats, apprenants, intervenants et tuteurs.
+                Gérez ici toutes les personnes (candidats, apprenants, intervenants et tuteurs).
+            </p>
+        </field>
+    </record>
+
+    <!-- Actions par rôle -->
+    <record id="action_limayrac_candidats" model="ir.actions.act_window">
+        <field name="name">Candidats</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="domain">[('is_candidat', '=', True), ('is_company', '=', False)]</field>
+        <field name="context">{
+            'default_is_company': False,
+            'default_is_candidat': True
+        }</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouveau candidat
+            </p>
+            <p>
+                Gérez ici les personnes en cours de candidature.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_limayrac_apprenants" model="ir.actions.act_window">
+        <field name="name">Apprenants</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="domain">[('is_apprenant', '=', True), ('is_company', '=', False)]</field>
+        <field name="context">{
+            'default_is_company': False,
+            'default_is_apprenant': True
+        }</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouvel apprenant
+            </p>
+            <p>
+                Gérez ici les élèves actuellement en formation (en cursus).
+            </p>
+        </field>
+    </record>
+
+    <record id="action_limayrac_alumni" model="ir.actions.act_window">
+        <field name="name">Alumni</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="domain">[('is_alumni', '=', True), ('is_company', '=', False)]</field>
+        <field name="context">{
+            'default_is_company': False,
+            'default_is_alumni': True
+        }</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouvel alumni
+            </p>
+            <p>
+                Gérez ici les anciens élèves diplômés.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_limayrac_tuteurs" model="ir.actions.act_window">
+        <field name="name">Tuteurs Entreprise</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="domain">[('is_tuteur', '=', True), ('is_company', '=', False)]</field>
+        <field name="context">{
+            'default_is_company': False,
+            'default_is_tuteur': True
+        }</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouveau tuteur
+            </p>
+            <p>
+                Gérez ici les tuteurs en entreprise qui encadrent les apprenants.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_limayrac_intervenants" model="ir.actions.act_window">
+        <field name="name">Intervenants / Formateurs</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="domain">[('is_intervenant', '=', True), ('is_company', '=', False)]</field>
+        <field name="context">{
+            'default_is_company': False,
+            'default_is_intervenant': True
+        }</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouvel intervenant
+            </p>
+            <p>
+                Gérez ici les formateurs et intervenants pédagogiques.
             </p>
         </field>
     </record>
@@ -20,9 +125,13 @@
     <record id="action_limayrac_company" model="ir.actions.act_window">
         <field name="name">Structures</field>
         <field name="res_model">res.partner</field>
-        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_mode">tree,kanban,form</field>
         <field name="domain">[('is_company', '=', True)]</field>
-        <field name="context">{'default_is_company': True}</field>
+        <field name="context">{
+            'default_is_company': True,
+            'search_default_is_company': True
+        }</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Créer une nouvelle structure
@@ -44,33 +153,70 @@
               parent="menu_limayrac_root"
               sequence="10"/>
 
-    <menuitem id="menu_limayrac_contacts_person"
+    <!-- Sous-menu Personnes avec tous les rôles -->
+    <menuitem id="menu_limayrac_contacts_personnes"
               name="Personnes"
               parent="menu_limayrac_contacts"
+              sequence="5"/>
+
+    <menuitem id="menu_limayrac_contacts_person_all"
+              name="Toutes les personnes"
+              parent="menu_limayrac_contacts_personnes"
               action="action_limayrac_person"
+              sequence="1"/>
+
+    <menuitem id="menu_limayrac_contacts_candidats"
+              name="Candidats"
+              parent="menu_limayrac_contacts_personnes"
+              action="action_limayrac_candidats"
               sequence="10"/>
 
+    <menuitem id="menu_limayrac_contacts_apprenants"
+              name="Apprenants (en cursus)"
+              parent="menu_limayrac_contacts_personnes"
+              action="action_limayrac_apprenants"
+              sequence="20"/>
+
+    <menuitem id="menu_limayrac_contacts_alumni"
+              name="Alumni"
+              parent="menu_limayrac_contacts_personnes"
+              action="action_limayrac_alumni"
+              sequence="30"/>
+
+    <menuitem id="menu_limayrac_contacts_tuteurs"
+              name="Tuteurs Entreprise"
+              parent="menu_limayrac_contacts_personnes"
+              action="action_limayrac_tuteurs"
+              sequence="40"/>
+
+    <menuitem id="menu_limayrac_contacts_intervenants"
+              name="Intervenants / Formateurs"
+              parent="menu_limayrac_contacts_personnes"
+              action="action_limayrac_intervenants"
+              sequence="50"/>
+
+    <!-- Menu Structures -->
     <menuitem id="menu_limayrac_contacts_company"
               name="Structures"
               parent="menu_limayrac_contacts"
               action="action_limayrac_company"
-              sequence="20"/>
+              sequence="10"/>
 
     <menuitem id="menu_limayrac_service"
               name="Services"
               parent="menu_limayrac_contacts"
               action="action_limayrac_service"
-              sequence="30"/>
+              sequence="20"/>
 
     <menuitem id="menu_limayrac_groupe_structure"
               name="Groupes"
               parent="menu_limayrac_contacts"
               action="action_limayrac_groupe_structure"
-              sequence="40"/>
+              sequence="30"/>
 
     <menuitem id="menu_limayrac_type_activite"
               name="Types d'activité"
               parent="menu_limayrac_contacts"
               action="action_limayrac_type_activite"
-              sequence="50"/>
+              sequence="40"/>
 </odoo>
