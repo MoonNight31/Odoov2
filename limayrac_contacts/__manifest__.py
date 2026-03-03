@@ -22,9 +22,9 @@
         'views/limayrac_groupe_structure_views.xml',
         'views/limayrac_type_activite_views.xml',
         'views/menus.xml',
-        'demo/demo_data.xml',
     ],
     'demo': [
+        'demo/demo_data.xml',
     ],
     'installable': True,
     'application': False,

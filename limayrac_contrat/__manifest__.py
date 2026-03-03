@@ -18,9 +18,9 @@
         'security/ir.model.access.csv',
         'views/limayrac_contrat_views.xml',
         'views/menus.xml',
-        'demo/demo_data.xml',
     ],
     'demo': [
+        'demo/demo_data.xml',
     ],
     'installable': True,
     'application': True,

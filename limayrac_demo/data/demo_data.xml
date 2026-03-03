@@ -1,0 +1,715 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ========================================== -->
+    <!-- DONNÉES DU MODULE LIMAYRAC_CONTACTS        -->
+    <!-- ========================================== -->
+
+    <!-- Groupes de structures -->
+    <record id="groupe_techcorp" model="limayrac.groupe.structure">
+        <field name="name">Groupe TechCorp</field>
+        <field name="siren">123456789</field>
+    </record>
+
+    <!-- Structures entreprises -->
+    <record id="structure_techcorp" model="res.partner">
+        <field name="name">TechCorp Solutions Toulouse</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">12345678900015</field>
+        <field name="raison_sociale">TechCorp Solutions SAS</field>
+        <field name="code_naf">6201Z</field>
+        <field name="site_web">https://techcorp-solutions.fr</field>
+        <field name="street">10 Avenue de l'Innovation</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31000</field>
+        <field name="phone">0561234567</field>
+        <field name="email">contact@techcorp-solutions.fr</field>
+        <field name="is_partenaire" eval="True"/>
+        <field name="groupe_structure_id" ref="groupe_techcorp"/>
+    </record>
+
+    <record id="structure_digitup" model="res.partner">
+        <field name="name">DigitUp Marketing</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">98765432100012</field>
+        <field name="raison_sociale">DigitUp Marketing SARL</field>
+        <field name="code_naf">7311Z</field>
+        <field name="site_web">https://digitup.fr</field>
+        <field name="street">25 Rue du Commerce</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31200</field>
+        <field name="phone">0562345678</field>
+        <field name="email">rh@digitup.fr</field>
+        <field name="is_partenaire" eval="True"/>
+    </record>
+
+    <record id="structure_innovtech" model="res.partner">
+        <field name="name">InnovTech Industries</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">45678912300018</field>
+        <field name="raison_sociale">InnovTech Industries SA</field>
+        <field name="code_naf">6202A</field>
+        <field name="site_web">https://innovtech.com</field>
+        <field name="street">50 Boulevard Technologique</field>
+        <field name="city">Labège</field>
+        <field name="zip">31670</field>
+        <field name="phone">0563456789</field>
+        <field name="email">recrutement@innovtech.com</field>
+        <field name="is_partenaire" eval="True"/>
+        <field name="is_taxe_apprentissage" eval="True"/>
+    </record>
+
+    <!-- Services -->
+    <record id="service_dev" model="limayrac.service">
+        <field name="type_service">Développement Web</field>
+        <field name="structure_id" ref="structure_techcorp"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="service_marketing" model="limayrac.service">
+        <field name="type_service">Marketing Digital</field>
+        <field name="structure_id" ref="structure_digitup"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="service_infrastructure" model="limayrac.service">
+        <field name="type_service">Infrastructure &amp; Cloud</field>
+        <field name="structure_id" ref="structure_innovtech"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <!-- Intervenants -->
+    <record id="intervenant_lefebvre" model="res.partner">
+        <field name="name">Lefebvre Jean</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">jean.lefebvre@limayrac.fr</field>
+        <field name="phone">0561334455</field>
+        <field name="function">Formateur Développement</field>
+        <field name="is_intervenant" eval="True"/>
+    </record>
+
+    <record id="intervenant_bernard" model="res.partner">
+        <field name="name">Bernard Claire</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">claire.bernard@limayrac.fr</field>
+        <field name="phone">0561445566</field>
+        <field name="function">Formatrice Réseaux</field>
+        <field name="is_intervenant" eval="True"/>
+    </record>
+
+    <!-- Tuteurs entreprise -->
+    <record id="tuteur_dubois" model="res.partner">
+        <field name="name">Dubois Thomas</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">thomas.dubois@techcorp-solutions.fr</field>
+        <field name="phone">0561556677</field>
+        <field name="function">Lead Developer</field>
+        <field name="service_id" ref="service_dev"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <record id="tuteur_laurent" model="res.partner">
+        <field name="name">Laurent Marie</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">marie.laurent@digitup.fr</field>
+        <field name="phone">0562667788</field>
+        <field name="function">Responsable Marketing</field>
+        <field name="service_id" ref="service_marketing"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <record id="tuteur_petit" model="res.partner">
+        <field name="name">Petit Alexandre</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">alexandre.petit@innovtech.com</field>
+        <field name="phone">0563778899</field>
+        <field name="function">Architecte Cloud</field>
+        <field name="service_id" ref="service_infrastructure"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <!-- Candidats -->
+    <record id="candidat_moreau" model="res.partner">
+        <field name="name">Moreau Lucas</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">lucas.moreau@gmail.com</field>
+        <field name="phone">0612345678</field>
+        <field name="street">5 Rue des Étudiants</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31000</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_simon" model="res.partner">
+        <field name="name">Simon Emma</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">emma.simon@gmail.com</field>
+        <field name="phone">0623456789</field>
+        <field name="street">12 Avenue de la République</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31100</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_robert" model="res.partner">
+        <field name="name">Robert Hugo</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">hugo.robert@outlook.fr</field>
+        <field name="phone">0634567890</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_martin" model="res.partner">
+        <field name="name">Martin Léa</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">lea.martin@gmail.com</field>
+        <field name="phone">0645678901</field>
+        <field name="street">8 Place du Capitole</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31000</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <record id="candidat_garcia" model="res.partner">
+        <field name="name">Garcia Tom</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">tom.garcia@yahoo.fr</field>
+        <field name="phone">0656789012</field>
+        <field name="street">15 Allée Jean Jaurès</field>
+        <field name="city">Blagnac</field>
+        <field name="zip">31700</field>
+        <field name="is_candidat" eval="True"/>
+    </record>
+
+    <!-- Apprenants actuels -->
+    <record id="apprenant_rousseau" model="res.partner">
+        <field name="name">Rousseau Chloé</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">chloe.rousseau@limayrac.fr</field>
+        <field name="phone">0667890123</field>
+        <field name="is_apprenant" eval="True"/>
+    </record>
+
+    <record id="apprenant_mercier" model="res.partner">
+        <field name="name">Mercier Antoine</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">antoine.mercier@limayrac.fr</field>
+        <field name="phone">0678901234</field>
+        <field name="is_apprenant" eval="True"/>
+    </record>
+
+    <!-- Alumni -->
+    <record id="alumni_fontaine" model="res.partner">
+        <field name="name">Fontaine Julie</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">julie.fontaine@gmail.com</field>
+        <field name="phone">0689012345</field>
+        <field name="is_alumni" eval="True"/>
+        <field name="function">Développeuse Full Stack</field>
+    </record>
+
+    <record id="alumni_brun" model="res.partner">
+        <field name="name">Brun Maxime</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">maxime.brun@outlook.fr</field>
+        <field name="phone">0690123456</field>
+        <field name="is_alumni" eval="True"/>
+        <field name="function">Chef de Projet Digital</field>
+    </record>
+
+    <!-- Structures supplémentaires -->
+    <record id="structure_cloudnet" model="res.partner">
+        <field name="name">CloudNet Services</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">11122233300019</field>
+        <field name="raison_sociale">CloudNet Services SAS</field>
+        <field name="code_naf">6311Z</field>
+        <field name="site_web">https://cloudnet.fr</field>
+        <field name="street">30 Rue des Entrepreneurs</field>
+        <field name="city">Colomiers</field>
+        <field name="zip">31770</field>
+        <field name="phone">0564567890</field>
+        <field name="email">contact@cloudnet.fr</field>
+        <field name="is_prospect" eval="True"/>
+    </record>
+
+    <record id="structure_ecomplus" model="res.partner">
+        <field name="name">EcomPlus Solutions</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">22233344400016</field>
+        <field name="raison_sociale">EcomPlus Solutions SARL</field>
+        <field name="code_naf">6201Z</field>
+        <field name="site_web">https://ecomplus.com</field>
+        <field name="street">18 Avenue de la Technologie</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31400</field>
+        <field name="phone">0565678901</field>
+        <field name="email">rh@ecomplus.com</field>
+        <field name="is_partenaire" eval="True"/>
+        <field name="is_taxe_apprentissage" eval="True"/>
+    </record>
+
+    <record id="structure_webagency" model="res.partner">
+        <field name="name">Web Agency Toulouse</field>
+        <field name="is_company" eval="True"/>
+        <field name="siret">33344455500013</field>
+        <field name="raison_sociale">Web Agency Toulouse EURL</field>
+        <field name="code_naf">6201Z</field>
+        <field name="site_web">https://webagency-tlse.fr</field>
+        <field name="street">45 Boulevard Carnot</field>
+        <field name="city">Toulouse</field>
+        <field name="zip">31000</field>
+        <field name="phone">0566789012</field>
+        <field name="email">info@webagency-tlse.fr</field>
+        <field name="is_prospect" eval="True"/>
+    </record>
+
+    <!-- Services supplémentaires -->
+    <record id="service_ecommerce" model="limayrac.service">
+        <field name="type_service">E-commerce &amp; Vente en ligne</field>
+        <field name="structure_id" ref="structure_ecomplus"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="service_design" model="limayrac.service">
+        <field name="type_service">Design &amp; UX/UI</field>
+        <field name="structure_id" ref="structure_webagency"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="service_data" model="limayrac.service">
+        <field name="type_service">Data &amp; Analytics</field>
+        <field name="structure_id" ref="structure_innovtech"/>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <!-- Intervenants supplémentaires -->
+    <record id="intervenant_roux" model="res.partner">
+        <field name="name">Roux Philippe</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">philippe.roux@limayrac.fr</field>
+        <field name="phone">0561998877</field>
+        <field name="function">Formateur Commerce Digital</field>
+        <field name="is_intervenant" eval="True"/>
+    </record>
+
+    <record id="intervenant_blanc" model="res.partner">
+        <field name="name">Blanc Sophie</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">sophie.blanc@limayrac.fr</field>
+        <field name="phone">0561887766</field>
+        <field name="function">Formatrice Gestion de Projet</field>
+        <field name="is_intervenant" eval="True"/>
+    </record>
+
+    <!-- Tuteurs supplémentaires -->
+    <record id="tuteur_girard" model="res.partner">
+        <field name="name">Girard Paul</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">paul.girard@ecomplus.com</field>
+        <field name="phone">0567889900</field>
+        <field name="function">Responsable E-commerce</field>
+        <field name="service_id" ref="service_ecommerce"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <record id="tuteur_morel" model="res.partner">
+        <field name="name">Morel Isabelle</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">isabelle.morel@webagency-tlse.fr</field>
+        <field name="phone">0568990011</field>
+        <field name="function">Directrice Artistique</field>
+        <field name="service_id" ref="service_design"/>
+        <field name="is_tuteur" eval="True"/>
+    </record>
+
+    <!-- Types d'activité -->
+    <record id="activite_informatique" model="limayrac.type.activite">
+        <field name="intitule">Informatique et développement</field>
+        <field name="description">Développement logiciel, web et applications</field>
+    </record>
+
+    <record id="activite_marketing" model="limayrac.type.activite">
+        <field name="intitule">Marketing et communication digitale</field>
+        <field name="description">Marketing digital, réseaux sociaux, communication en ligne</field>
+    </record>
+
+    <record id="activite_gestion" model="limayrac.type.activite">
+        <field name="intitule">Gestion de projet digital</field>
+        <field name="description">Gestion et coordination de projets digitaux</field>
+    </record>
+
+    <record id="activite_commerce" model="limayrac.type.activite">
+        <field name="intitule">Commerce et relation client</field>
+        <field name="description">Vente, négociation et gestion de la relation client</field>
+    </record>
+
+    <record id="activite_design" model="limayrac.type.activite">
+        <field name="intitule">Design et UX/UI</field>
+        <field name="description">Design graphique, expérience et interface utilisateur</field>
+    </record>
+
+    <record id="activite_data" model="limayrac.type.activite">
+        <field name="intitule">Data et analyse</field>
+        <field name="description">Analyse de données, business intelligence, data science</field>
+    </record>
+
+    <!-- ========================================== -->
+    <!-- DONNÉES DU MODULE LIMAYRAC_FORMATION       -->
+    <!-- ========================================== -->
+
+    <!-- Formations -->
+    <record id="formation_bts_sio" model="limayrac.formation">
+        <field name="nom_commercial">BTS SIO - Services Informatiques aux Organisations</field>
+        <field name="description">Formation en 2 ans préparant aux métiers du numérique</field>
+    </record>
+
+    <record id="formation_bts_ndrc" model="limayrac.formation">
+        <field name="nom_commercial">BTS NDRC - Négociation et Digitalisation de la Relation Client</field>
+        <field name="description">Formation commerciale avec focus sur le digital</field>
+    </record>
+
+    <record id="formation_bachelor" model="limayrac.formation">
+        <field name="nom_commercial">Bachelor Chef de Projet Digital</field>
+        <field name="description">Formation Bac+3 en gestion de projets digitaux</field>
+    </record>
+
+    <record id="formation_bts_mcdo" model="limayrac.formation">
+        <field name="nom_commercial">BTS MCO - Management Commercial Opérationnel</field>
+        <field name="description">Formation en management des unités commerciales</field>
+    </record>
+
+    <record id="formation_bts_sam" model="limayrac.formation">
+        <field name="nom_commercial">BTS SAM - Support à l'Action Managériale</field>
+        <field name="description">Formation en assistance et gestion administrative</field>
+    </record>
+
+    <!-- Titres RNCP -->
+    <record id="titre_sio" model="limayrac.titre.rncp">
+        <field name="code_rncp">RNCP35340</field>
+        <field name="intitule">BTS Services Informatiques aux Organisations</field>
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="date_debut">2020-01-01</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="titre_ndrc" model="limayrac.titre.rncp">
+        <field name="code_rncp">RNCP38368</field>
+        <field name="intitule">BTS Négociation et Digitalisation de la Relation Client</field>
+        <field name="formation_id" ref="formation_bts_ndrc"/>
+        <field name="date_debut">2021-01-01</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="titre_bachelor" model="limayrac.titre.rncp">
+        <field name="code_rncp">RNCP36374</field>
+        <field name="intitule">Chef de Projet Digital</field>
+        <field name="formation_id" ref="formation_bachelor"/>
+        <field name="date_debut">2019-01-01</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="titre_mcdo" model="limayrac.titre.rncp">
+        <field name="code_rncp">RNCP38362</field>
+        <field name="intitule">BTS Management Commercial Opérationnel</field>
+        <field name="formation_id" ref="formation_bts_mcdo"/>
+        <field name="date_debut">2020-01-01</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <!-- Responsables de formation -->
+    <record id="responsable_martin" model="res.partner">
+        <field name="name">Martin Sophie</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">sophie.martin@limayrac.fr</field>
+        <field name="phone">0561112233</field>
+        <field name="function">Responsable BTS SIO</field>
+        <field name="formation_responsable_id" ref="formation_bts_sio"/>
+    </record>
+
+    <record id="responsable_durand" model="res.partner">
+        <field name="name">Durand Pierre</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">pierre.durand@limayrac.fr</field>
+        <field name="phone">0561223344</field>
+        <field name="function">Responsable BTS NDRC</field>
+        <field name="formation_responsable_id" ref="formation_bts_ndrc"/>
+    </record>
+
+    <record id="responsable_leclerc" model="res.partner">
+        <field name="name">Leclerc Caroline</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">caroline.leclerc@limayrac.fr</field>
+        <field name="phone">0561334455</field>
+        <field name="function">Responsable Bachelor</field>
+        <field name="formation_responsable_id" ref="formation_bachelor"/>
+    </record>
+
+    <!-- Besoins entreprises -->
+    <record id="besoin_techcorp" model="limayrac.besoin">
+        <field name="titre">Besoin de 2 développeurs web en alternance</field>
+        <field name="poste">Développeur Web</field>
+        <field name="structure_id" ref="structure_techcorp"/>
+        <field name="date">2026-01-10</field>
+        <field name="description">Recherche 2 alternants pour renforcer l'équipe de développement</field>
+        <field name="state">en_cours</field>
+    </record>
+
+    <record id="besoin_digitup" model="limayrac.besoin">
+        <field name="titre">Alternant Marketing Digital</field>
+        <field name="poste">Chargé de Marketing Digital</field>
+        <field name="structure_id" ref="structure_digitup"/>
+        <field name="date">2026-02-15</field>
+        <field name="description">Besoin d'un alternant pour gérer les réseaux sociaux</field>
+        <field name="state">nouveau</field>
+    </record>
+
+    <record id="besoin_innovtech" model="limayrac.besoin">
+        <field name="titre">Stage développeur Cloud</field>
+        <field name="poste">Stagiaire Développeur Cloud</field>
+        <field name="structure_id" ref="structure_innovtech"/>
+        <field name="date">2026-02-20</field>
+        <field name="description">Stage de 6 mois en développement d'infrastructures cloud</field>
+        <field name="state">nouveau</field>
+    </record>
+
+    <record id="besoin_ecomplus" model="limayrac.besoin">
+        <field name="titre">Développeur web e-commerce</field>
+        <field name="poste">Développeur Web E-commerce</field>
+        <field name="structure_id" ref="structure_ecomplus"/>
+        <field name="date">2026-03-01</field>
+        <field name="description">Recherche développeur pour plateforme de vente en ligne</field>
+        <field name="state">en_cours</field>
+    </record>
+
+    <record id="besoin_webagency" model="limayrac.besoin">
+        <field name="titre">Designer UX/UI Junior</field>
+        <field name="poste">Designer UX/UI Junior</field>
+        <field name="structure_id" ref="structure_webagency"/>
+        <field name="date">2026-02-25</field>
+        <field name="description">Alternant pour participer à la conception d'interfaces web</field>
+        <field name="state">nouveau</field>
+    </record>
+    
+    <!-- Opportunités (lien entre formations et besoins) -->
+    <record id="opportunite_techcorp_sio" model="limayrac.opportunite">
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="besoin_id" ref="besoin_techcorp"/>
+    </record>
+    
+    <record id="opportunite_digitup_ndrc" model="limayrac.opportunite">
+        <field name="formation_id" ref="formation_bts_ndrc"/>
+        <field name="besoin_id" ref="besoin_digitup"/>
+    </record>
+
+    <record id="opportunite_innovtech_sio" model="limayrac.opportunite">
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="besoin_id" ref="besoin_innovtech"/>
+    </record>
+
+    <record id="opportunite_ecomplus_sio" model="limayrac.opportunite">
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="besoin_id" ref="besoin_ecomplus"/>
+    </record>
+
+    <record id="opportunite_bachelor_webagency" model="limayrac.opportunite">
+        <field name="formation_id" ref="formation_bachelor"/>
+        <field name="besoin_id" ref="besoin_webagency"/>
+    </record>
+
+    <!-- ========================================== -->
+    <!-- DONNÉES DU MODULE LIMAYRAC_CANDIDATURE     -->
+    <!-- ========================================== -->
+
+    <!-- Vœux -->
+    <record id="voeux_moreau" model="limayrac.voeux">
+        <field name="apprenant_id" ref="candidat_moreau"/>
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="date_candidature">2026-01-15</field>
+        <field name="type_contrat_souhaite">alternance</field>
+        <field name="note_rp">Candidat motivé avec des bases en programmation</field>
+        <field name="state">accepte</field>
+        <field name="entreprise_id" ref="structure_techcorp"/>
+    </record>
+
+    <record id="voeux_simon" model="limayrac.voeux">
+        <field name="apprenant_id" ref="candidat_simon"/>
+        <field name="formation_id" ref="formation_bts_ndrc"/>
+        <field name="date_candidature">2026-01-20</field>
+        <field name="type_contrat_souhaite">alternance</field>
+        <field name="note_rp">Excellente communication, expérience en vente</field>
+        <field name="state">accepte</field>
+        <field name="entreprise_id" ref="structure_digitup"/>
+    </record>
+
+    <record id="voeux_robert" model="limayrac.voeux">
+        <field name="apprenant_id" ref="candidat_robert"/>
+        <field name="formation_id" ref="formation_bachelor"/>
+        <field name="date_candidature">2026-02-01</field>
+        <field name="type_contrat_souhaite">stage</field>
+        <field name="state">rp_evaluation</field>
+    </record>
+
+    <record id="voeux_martin" model="limayrac.voeux">
+        <field name="apprenant_id" ref="candidat_martin"/>
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="date_candidature">2026-02-10</field>
+        <field name="type_contrat_souhaite">alternance</field>
+        <field name="state">cfp_rdv_jury</field>
+        <field name="date_rdv_jury">2026-03-15 10:00:00</field>
+    </record>
+
+    <record id="voeux_garcia" model="limayrac.voeux">
+        <field name="apprenant_id" ref="candidat_garcia"/>
+        <field name="formation_id" ref="formation_bts_ndrc"/>
+        <field name="date_candidature">2026-02-12</field>
+        <field name="type_contrat_souhaite">alternance</field>
+        <field name="state">sre_mission</field>
+        <field name="entreprise_id" ref="structure_ecomplus"/>
+    </record>
+
+    <!-- Cursus -->
+    <record id="cursus_moreau" model="limayrac.cursus">
+        <field name="apprenant_id" ref="candidat_moreau"/>
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="date_debut">2026-09-01</field>
+        <field name="date_fin">2028-06-30</field>
+        <field name="is_diplome" eval="False"/>
+    </record>
+
+    <record id="cursus_simon" model="limayrac.cursus">
+        <field name="apprenant_id" ref="candidat_simon"/>
+        <field name="formation_id" ref="formation_bts_ndrc"/>
+        <field name="date_debut">2026-09-01</field>
+        <field name="date_fin">2028-06-30</field>
+        <field name="is_diplome" eval="False"/>
+    </record>
+
+    <record id="cursus_rousseau" model="limayrac.cursus">
+        <field name="apprenant_id" ref="apprenant_rousseau"/>
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="date_debut">2025-09-01</field>
+        <field name="date_fin">2027-06-30</field>
+        <field name="is_diplome" eval="False"/>
+    </record>
+
+    <record id="cursus_mercier" model="limayrac.cursus">
+        <field name="apprenant_id" ref="apprenant_mercier"/>
+        <field name="formation_id" ref="formation_bachelor"/>
+        <field name="date_debut">2025-09-01</field>
+        <field name="date_fin">2026-06-30</field>
+        <field name="is_diplome" eval="False"/>
+    </record>
+
+    <record id="cursus_fontaine" model="limayrac.cursus">
+        <field name="apprenant_id" ref="alumni_fontaine"/>
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="date_debut">2022-09-01</field>
+        <field name="date_fin">2024-06-30</field>
+        <field name="is_diplome" eval="True"/>
+    </record>
+
+    <record id="cursus_brun" model="limayrac.cursus">
+        <field name="apprenant_id" ref="alumni_brun"/>
+        <field name="formation_id" ref="formation_bachelor"/>
+        <field name="date_debut">2021-09-01</field>
+        <field name="date_fin">2024-06-30</field>
+        <field name="is_diplome" eval="True"/>
+    </record>
+
+    <!-- ========================================== -->
+    <!-- DONNÉES DU MODULE LIMAYRAC_CONTRAT         -->
+    <!-- ========================================== -->
+
+    <!-- Contrats -->
+    <record id="contrat_moreau" model="limayrac.contrat">
+        <field name="apprenant_id" ref="candidat_moreau"/>
+        <field name="cursus_id" ref="cursus_moreau"/>
+        <field name="service_id" ref="service_dev"/>
+        <field name="type_contrat">apprentissage</field>
+        <field name="description_mission">Développement d'applications web et maintenance de sites clients</field>
+        <field name="activite_id" ref="activite_informatique"/>
+        <field name="date_debut">2026-09-01</field>
+        <field name="date_fin">2028-08-31</field>
+        <field name="tuteur_entreprise_id" ref="tuteur_dubois"/>
+        <field name="tuteur_ecole_id" ref="intervenant_lefebvre"/>
+        <field name="notation">4</field>
+        <field name="commentaire">Excellent apprenant, très investi dans ses missions</field>
+    </record>
+
+    <record id="contrat_simon" model="limayrac.contrat">
+        <field name="apprenant_id" ref="candidat_simon"/>
+        <field name="cursus_id" ref="cursus_simon"/>
+        <field name="service_id" ref="service_marketing"/>
+        <field name="type_contrat">professionnalisation</field>
+        <field name="description_mission">Gestion de campagnes digitales et animation des réseaux sociaux</field>
+        <field name="activite_id" ref="activite_marketing"/>
+        <field name="date_debut">2026-09-01</field>
+        <field name="date_fin">2028-08-31</field>
+        <field name="tuteur_entreprise_id" ref="tuteur_laurent"/>
+        <field name="tuteur_ecole_id" ref="intervenant_bernard"/>
+        <field name="notation">5</field>
+        <field name="commentaire">Très bon relationnel, excellent potentiel commercial</field>
+    </record>
+
+    <record id="contrat_rousseau" model="limayrac.contrat">
+        <field name="apprenant_id" ref="apprenant_rousseau"/>
+        <field name="cursus_id" ref="cursus_rousseau"/>
+        <field name="service_id" ref="service_infrastructure"/>
+        <field name="type_contrat">apprentissage</field>
+        <field name="description_mission">Administration systèmes et réseaux, gestion d'infrastructure cloud</field>
+        <field name="activite_id" ref="activite_informatique"/>
+        <field name="date_debut">2025-09-01</field>
+        <field name="date_fin">2027-08-31</field>
+        <field name="tuteur_entreprise_id" ref="tuteur_petit"/>
+        <field name="tuteur_ecole_id" ref="intervenant_bernard"/>
+        <field name="notation">4</field>
+        <field name="commentaire">Bonne autonomie, compétences techniques solides</field>
+    </record>
+
+    <record id="contrat_mercier" model="limayrac.contrat">
+        <field name="apprenant_id" ref="apprenant_mercier"/>
+        <field name="cursus_id" ref="cursus_mercier"/>
+        <field name="service_id" ref="service_design"/>
+        <field name="type_contrat">stage</field>
+        <field name="description_mission">Assistance sur la conception d'interfaces utilisateur et design graphique</field>
+        <field name="activite_id" ref="activite_design"/>
+        <field name="date_debut">2026-01-15</field>
+        <field name="date_fin">2026-06-30</field>
+        <field name="tuteur_entreprise_id" ref="tuteur_morel"/>
+        <field name="tuteur_ecole_id" ref="intervenant_blanc"/>
+        <field name="notation">3</field>
+        <field name="commentaire">Bon potentiel créatif, à encourager</field>
+    </record>
+
+    <record id="contrat_fontaine" model="limayrac.contrat">
+        <field name="apprenant_id" ref="alumni_fontaine"/>
+        <field name="cursus_id" ref="cursus_fontaine"/>
+        <field name="service_id" ref="service_ecommerce"/>
+        <field name="type_contrat">apprentissage</field>
+        <field name="description_mission">Développement de fonctionnalités e-commerce et intégration de paiements</field>
+        <field name="activite_id" ref="activite_informatique"/>
+        <field name="date_debut">2022-09-01</field>
+        <field name="date_fin">2024-08-31</field>
+        <field name="tuteur_entreprise_id" ref="tuteur_girard"/>
+        <field name="tuteur_ecole_id" ref="intervenant_lefebvre"/>
+        <field name="notation">5</field>
+        <field name="commentaire">Excellente apprentie, embauchée à la fin du contrat</field>
+    </record>
+
+    <record id="contrat_brun" model="limayrac.contrat">
+        <field name="apprenant_id" ref="alumni_brun"/>
+        <field name="cursus_id" ref="cursus_brun"/>
+        <field name="service_id" ref="service_marketing"/>
+        <field name="type_contrat">professionnalisation</field>
+        <field name="description_mission">Pilotage de projets digitaux, coordination d'équipes marketing</field>
+        <field name="activite_id" ref="activite_gestion"/>
+        <field name="date_debut">2022-09-01</field>
+        <field name="date_fin">2024-08-31</field>
+        <field name="tuteur_entreprise_id" ref="tuteur_laurent"/>
+        <field name="tuteur_ecole_id" ref="intervenant_blanc"/>
+        <field name="notation">5</field>
+        <field name="commentaire">Excellentes capacités de gestion et de leadership</field>
+    </record>
+</odoo>
+

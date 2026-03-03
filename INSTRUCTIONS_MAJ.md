@@ -2,57 +2,48 @@
 
 ## Pour le serveur distant
 
-### Option 1 : Mise à jour via l'interface Odoo
+### ⚠️ NOUVELLE MÉTHODE SIMPLIFIÉE ⚠️
 
-1. Connectez-vous à Odoo en tant qu'administrateur
-2. Allez dans **Applications**
-3. En haut à droite, activez le **Mode Développeur** (icône insecte)
-4. Cliquez sur **Mettre à jour la liste des applications**
-5. Mettez à jour les modules **UN PAR UN** dans cet ordre :
+Un nouveau module **`limayrac_demo`** a été créé pour faciliter le chargement des données de démonstration.
 
+### Procédure d'installation avec données de démonstration
+
+1. **Uploader tous les modules** sur votre serveur dans le dossier des addons Odoo :
+   - limayrac_contacts
+   - limayrac_formation
+   - limayrac_candidature
+   - limayrac_contrat
+   - **limayrac_demo** (nouveau !)
+
+2. **Mettre à jour la liste des applications** :
+   - Connectez-vous à Odoo en tant qu'administrateur
+   - Allez dans **Applications**
+   - Activez le **Mode Développeur** (icône insecte)
+   - Cliquez sur **Mettre à jour la liste des applications**
+
+3. **Installer les modules dans l'ordre** :
    ```
    1. limayrac_contacts
    2. limayrac_formation
    3. limayrac_candidature
    4. limayrac_contrat
+   5. limayrac_demo (★ IMPORTANT : en dernier !)
    ```
 
-   ⚠️ **IMPORTANT** : Attendez que chaque mise à jour soit complètement terminée avant de passer à la suivante !
+4. **C'est tout !** Les données de démonstration seront automatiquement chargées lors de l'installation de `limayrac_demo`
 
-### Option 2 : Mise à jour via ligne de commande SSH
+### Option 2 : Installation sans données de démonstration
 
-Connectez-vous au serveur et exécutez :
-
-```bash
-# Se connecter au conteneur Odoo (si Docker)
-docker exec -it nom_conteneur_odoo bash
-
-# Ou directement sur le serveur, exécuter :
-odoo-bin -d nom_base_donnees \
-  -u limayrac_contacts,limayrac_formation,limayrac_candidature,limayrac_contrat \
-  --stop-after-init
-```
+Si vous ne voulez **PAS** de données de démonstration, installez simplement les 4 premiers modules et **ne pas installer** `limayrac_demo`.
 
 ### Vérification du chargement des données
 
-Après la mise à jour, vérifiez que les données sont bien présentes :
+Après l'installation de `limayrac_demo`, vérifiez que les données sont bien présentes :
 
-- **Contacts** : Doit contenir ~20 personnes et ~6 structures
-- **Formations** : Doit contenir 5 formations
-- **Candidatures** : Doit contenir ~9 vœux et ~7 cursus
-- **Contrats** : Doit contenir 6 contrats
-
-### En cas d'erreur "External ID not found"
-
-Si vous obtenez une erreur indiquant qu'un ID externe n'est pas trouvé, c'est que les modules n'ont pas été mis à jour dans le bon ordre. Procédure de récupération :
-
-1. Supprimez tous les enregistrements créés manuellement dans les modules
-2. Désinstallez les modules dans l'ordre inverse :
-   - limayrac_contrat
-   - limayrac_candidature
-   - limayrac_formation
-   - limayrac_contacts
-3. Réinstallez-les dans l'ordre correct (voir ci-dessus)
+- **Contacts** : ~20 personnes et ~6 structures
+- **Formations** : 5 formations avec titres RNCP
+- **Candidatures** : ~9 vœux et ~7 cursus
+- **Contrats** : 6 contrats
 
 ### Structure des dépendances
 
@@ -64,6 +55,8 @@ limayrac_formation (dépend de limayrac_contacts)
 limayrac_candidature (dépend de limayrac_contacts et limayrac_formation)
     ↓
 limayrac_contrat (dépend de tous les modules précédents)
+    ↓
+limayrac_demo (dépend de tous les modules - OPTIONNEL)
 ```
 
 ## Données incluses
