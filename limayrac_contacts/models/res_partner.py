@@ -18,9 +18,6 @@ class ResPartner(models.Model):
     # Relation avec le service (pour les personnes)
     service_id = fields.Many2one('limayrac.service', string='Service')
     
-    # Responsable de formation
-    formation_responsable_id = fields.Many2one('limayrac.formation', string='Formation (Responsable)')
-    
     # Champs spécifiques pour les structures (entreprises)
     siret = fields.Char(string='SIRET', size=14)
     raison_sociale = fields.Char(string='Raison Sociale')
