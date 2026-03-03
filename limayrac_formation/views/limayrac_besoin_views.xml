@@ -24,6 +24,7 @@
             <pivot string="Analyse Besoins" sample="1">
                 <field name="structure_id" type="row"/>
                 <field name="state" type="col"/>
+                <field name="id" type="measure" string="Total"/>
             </pivot>
         </field>
     </record>
