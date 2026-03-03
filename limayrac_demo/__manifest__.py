@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Limayrac - Données de démonstration',
-    'version': '1.0.1',
+    'version': '1.0.2',
     'category': 'Education',
     'summary': 'Données de démonstration pour tous les modules Limayrac',
     'description': """
