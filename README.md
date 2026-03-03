@@ -243,10 +243,6 @@ Pour proposer des améliorations :
 
 Développé pour l'établissement Limayrac - Tous droits réservés
 
-## 📞 Support
-
-Pour toute question ou problème, contacter l'équipe technique Limayrac.
-
 ---
 
 **Version** : 1.0  
