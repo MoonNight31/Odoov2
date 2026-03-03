@@ -16,6 +16,16 @@
         <field name="description">Formation Bac+3 en gestion de projets digitaux</field>
     </record>
 
+    <record id="formation_bts_mcdo" model="limayrac.formation">
+        <field name="nom_commercial">BTS MCO - Management Commercial Opérationnel</field>
+        <field name="description">Formation en management des unités commerciales</field>
+    </record>
+
+    <record id="formation_bts_sam" model="limayrac.formation">
+        <field name="nom_commercial">BTS SAM - Support à l'Action Managériale</field>
+        <field name="description">Formation en assistance et gestion administrative</field>
+    </record>
+
     <!-- Titres RNCP -->
     <record id="titre_sio" model="limayrac.titre.rncp">
         <field name="code_rncp">RNCP35340</field>
@@ -30,6 +40,22 @@
         <field name="intitule">BTS Négociation et Digitalisation de la Relation Client</field>
         <field name="formation_id" ref="formation_bts_ndrc"/>
         <field name="date_debut">2021-01-01</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="titre_bachelor" model="limayrac.titre.rncp">
+        <field name="code_rncp">RNCP36374</field>
+        <field name="intitule">Chef de Projet Digital</field>
+        <field name="formation_id" ref="formation_bachelor"/>
+        <field name="date_debut">2019-01-01</field>
+        <field name="is_active" eval="True"/>
+    </record>
+
+    <record id="titre_mcdo" model="limayrac.titre.rncp">
+        <field name="code_rncp">RNCP38362</field>
+        <field name="intitule">BTS Management Commercial Opérationnel</field>
+        <field name="formation_id" ref="formation_bts_mcdo"/>
+        <field name="date_debut">2020-01-01</field>
         <field name="is_active" eval="True"/>
     </record>
 
@@ -52,6 +78,15 @@
         <field name="formation_responsable_id" ref="formation_bts_ndrc"/>
     </record>
 
+    <record id="responsable_leclerc" model="res.partner">
+        <field name="name">Leclerc Caroline</field>
+        <field name="is_company" eval="False"/>
+        <field name="email">caroline.leclerc@limayrac.fr</field>
+        <field name="phone">0561334455</field>
+        <field name="function">Responsable Bachelor</field>
+        <field name="formation_responsable_id" ref="formation_bachelor"/>
+    </record>
+
     <!-- Besoins entreprises -->
     <record id="besoin_techcorp" model="limayrac.besoin">
         <field name="titre">Besoin de 2 développeurs web en alternance</field>
@@ -70,6 +105,33 @@
         <field name="description">Besoin d'un alternant pour gérer les réseaux sociaux</field>
         <field name="state">nouveau</field>
     </record>
+
+    <record id="besoin_innovtech" model="limayrac.besoin">
+        <field name="titre">Stage développeur Cloud</field>
+        <field name="poste">Stagiaire Développeur Cloud</field>
+        <field name="structure_id" ref="limayrac_contacts.structure_innovtech"/>
+        <field name="date">2026-02-20</field>
+        <field name="description">Stage de 6 mois en développement d'infrastructures cloud</field>
+        <field name="state">nouveau</field>
+    </record>
+
+    <record id="besoin_ecomplus" model="limayrac.besoin">
+        <field name="titre">Développeur web e-commerce</field>
+        <field name="poste">Développeur Web E-commerce</field>
+        <field name="structure_id" ref="limayrac_contacts.structure_ecomplus"/>
+        <field name="date">2026-03-01</field>
+        <field name="description">Recherche développeur pour plateforme de vente en ligne</field>
+        <field name="state">en_cours</field>
+    </record>
+
+    <record id="besoin_webagency" model="limayrac.besoin">
+        <field name="titre">Designer UX/UI Junior</field>
+        <field name="poste">Designer UX/UI Junior</field>
+        <field name="structure_id" ref="limayrac_contacts.structure_webagency"/>
+        <field name="date">2026-02-25</field>
+        <field name="description">Alternant pour participer à la conception d'interfaces web</field>
+        <field name="state">nouveau</field>
+    </record>
     
     <!-- Opportunités (lien entre formations et besoins) -->
     <record id="opportunite_techcorp_sio" model="limayrac.opportunite">
@@ -80,5 +142,20 @@
     <record id="opportunite_digitup_ndrc" model="limayrac.opportunite">
         <field name="formation_id" ref="formation_bts_ndrc"/>
         <field name="besoin_id" ref="besoin_digitup"/>
+    </record>
+
+    <record id="opportunite_innovtech_sio" model="limayrac.opportunite">
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="besoin_id" ref="besoin_innovtech"/>
+    </record>
+
+    <record id="opportunite_ecomplus_sio" model="limayrac.opportunite">
+        <field name="formation_id" ref="formation_bts_sio"/>
+        <field name="besoin_id" ref="besoin_ecomplus"/>
+    </record>
+
+    <record id="opportunite_bachelor_webagency" model="limayrac.opportunite">
+        <field name="formation_id" ref="formation_bachelor"/>
+        <field name="besoin_id" ref="besoin_webagency"/>
     </record>
 </odoo>
