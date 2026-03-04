@@ -56,7 +56,7 @@
                     <group>
                         <group string="Apprenant">
                             <field name="apprenant_id"/>
-                            <field name="cursus_id"/>
+                             <!--<field name="cursus_id"/>-->
                             <field name="formation_id"/>
                         </group>
                         <group string="Entreprise">

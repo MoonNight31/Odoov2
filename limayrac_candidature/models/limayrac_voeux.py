@@ -56,7 +56,7 @@ class LimayracVoeux(models.Model):
     note_jury = fields.Text(string='Note Jury (Commentaire)')
     
     # Indicateurs booléens
-    is_besoin = fields.Boolean(string='Lié à un besoin', default=False)
+    is_besoin = fields.Boolean(string='Besoin spécifique', default=False)
     is_kairos = fields.Boolean(string='Kaïros', default=False)
     is_alternant = fields.Boolean(string='Alternant', default=False)
     is_presence_coaching = fields.Boolean(string='Présence Coaching', default=False)
